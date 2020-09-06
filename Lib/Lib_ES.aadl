@@ -13,19 +13,26 @@ public
 			DeleteApp: feature group Lib_DeleteApp;
 			app1_task_state: out data port Data_ES::struct.CFE_ES_TaskRecord_t;
 			app1_app_state: out data port Data_ES::struct.CFE_ES_AppRecord_t;
+            a: out data port Base_Types::boolean;
+			
 		annex agree{**
+			guarantee "":  a=false;
+			guarantee "": RestartApp.Result = 1;
 			--0: running 1: restart  关于staterecord代表哪个app，
 			--在lib中进行处理识别是哪个数据字段，然后直接返回处理结果
 			eq SUCCESS: int = 0;
 			eq ERR_APPID: int = 1;
+			
+			eq app_running : bool = (app1_app_state.StateRecord.AppState = 0);
+			eq app_restart: bool = (app1_app_state.StateRecord.AppState = 1);
 			guarantee "" :true-> RestartApp.AppId < 4 =>  RestartApp.Result = ERR_APPID;
 			guarantee " ":true ->
 			    if (RestartApp.Valid = true 
 			    and RestartApp.AppId > 3 
 			    and RestartApp.AppId < 32 
-			    and pre(app1_app_state.StateRecord.AppState = 0)) 
+			    and pre(app_running)) 
 			    then 
-			    app1_app_state.StateRecord.AppState = 1 and RestartApp.Result = SUCCESS
+			    app_restart and RestartApp.Result = SUCCESS
 			    else 
 			    RestartApp.Result = ERR_APPID;
 		   guarantee "initial op is done at first  ":
@@ -73,14 +80,18 @@ public
 --------------------------------------------------------------------------
 ------------------------------RestartApp----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_RestartApp extends Lib::LibPort
+	feature group Lib_RestartApp 
 		features
 			AppId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::boolean;
+			Result: out data port Base_Types::Unsigned_32; -- 0 表示成功， 1表示失败，
 	end Lib_RestartApp;
 
-	feature group Com_RestartApp extends Lib::ComPort
+	feature group Com_RestartApp
 		features
 			AppId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::boolean;
+			Result: in data port Base_Types::Unsigned_32; -- 0 表示成功， 1表示失败，
 	inverse of Lib_RestartApp
 	end Com_RestartApp;
 

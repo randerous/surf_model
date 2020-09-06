@@ -17,6 +17,8 @@ public
 	with Lib_EVS;
 
 	with Lib_TIME;
+	
+	with Base_Types;
     
 
     
@@ -43,6 +45,7 @@ public
 			Unregister: feature group Lib_EVS::Lib_Unregister;
 			SendEvent: feature group Lib_EVS::Lib_SendEvent;
 			GetTime: feature group Lib_TIME::Lib_GetTime;
+			a: out data port Base_Types::boolean;
 			
 			annex agree{**
 				--assume "one cmd at one time" : RegisterApp.TaskId > 0; --两两不能同时为1
@@ -69,10 +72,20 @@ public
 			eq ERR_BUFFER: int = 12;
 			
 			eq APP_NOT_REGISTERED: int = 13;
-			
-			
-			guarantee "restart app": true -> RestartApp.Valid = true => 
+			eq NO_MESSAGE: int = 14;
+			eq TIME_OUT: int = 15;
+			eq PIPE_RD_ERR: int = 16;
+ 
+ 
+ 
+           --guarantee "a" : a = true;
+           --guarantee "": RestartApp.Result = ERR_APPID;
+           guarantee "restart app": true -> RestartApp.Valid = true => 
 			    RestartApp.Result = SUCCESS or RestartApp.Result = ERR_APPID;
+            --guarantee "": RcvMsg.Valid = true => RcvMsg.Result = SUCCESS or RcvMsg.Result = BAD_ARGUMENT
+				--or RcvMsg.Result = NO_MESSAGE or RcvMsg.Result = TIME_OUT or RcvMsg.Result = PIPE_RD_ERR;
+			
+			
 			--guarantee "": DeleteApp.Valid = true => DeleteApp.Result = SUCCESS or DeleteApp.Result = ERR_APPID;
 			--guarantee "": CreatePipe.Valid = true => CreatePipe.Result = SUCCESS or CreatePipe.Result = INVALID_PIPE
 			--	or CreatePipe.Result = BAD_ARGUMENT or CreatePipe.Result = MAX_PIPES_MET or CreatePipe.Result = PIPE_CR_ERR;
@@ -103,12 +116,15 @@ public
 				--sb: thread Component_SB::sb;
 				--evs: thread Component_EVS::evs;
 				--time: thread Component_TIME::time;
-			    es_lib: thread Lib_ES::es_lib ;
+		es_lib: thread Lib_ES::es_lib.impl ;
 			    --sb_lib: thread Lib_SB::sb_lib.impl;
 				--evs_lib: thread Lib_EVS::evs_lib.impl;
-				--time_lib: thread Lib_TIME::time_lib.impl;
+				--time_lib: thread Lib_TIME::time_lib.impl;   
 		connections
-			restart_app_connection: feature group RestartApp <-> es_lib.RestartApp;
+			fsd: port  es_lib.a -> a;
+			 restart_app_connection: feature group RestartApp <-> es_lib.RestartApp;
+			 
+--			 abc: port es_lib.RestartApp.Result -> RestartApp.Result;
 				
 		annex agree {**
 			
