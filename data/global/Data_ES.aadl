@@ -1,0 +1,80 @@
+package Data_ES
+public
+	with Base_Types;
+
+	data es
+--		features
+--			read: out feature group plug;
+	end es;
+
+	data struct
+	end struct;
+	
+--	feature group slot
+--		features
+--			TaskTbl: requires data access struct.CFE_ES_TaskRecord_t;
+--			AppTbl: requires data access struct.CFE_ES_AppRecord_t;
+--			AvailableTask: requires data access Base_Types::Unsigned_32;
+--	end slot;
+--	
+--	feature group plug
+--		features
+--			TaskTbl: provides data access struct.CFE_ES_TaskRecord_t;
+--			AppTbl: provides data access struct.CFE_ES_AppRecord_t;
+--			AvailableTask: provides data access Base_Types::Unsigned_32;
+--		inverse of slot
+--	end plug;
+
+	data implementation es.CFE_ES_Global_t
+		subcomponents
+			TaskTbl: data struct.CFE_ES_TaskRecord_t;
+			AppTbl: data struct.CFE_ES_AppRecord_t;
+			AvailableTask: data Base_Types::Unsigned_32;
+	end es.CFE_ES_Global_t;
+
+	data implementation struct.CFE_ES_TaskRecord_t
+		subcomponents
+			RecordUsed: data Base_Types::Boolean;
+			AppId: data Base_Types::Unsigned_32;
+			TaskId: data Base_Types::Unsigned_32;
+			ExecutionCounter: data Base_Types::Unsigned_32;
+			TaskName: data Base_Types::String;
+	end struct.CFE_ES_TaskRecord_t;
+
+	data implementation struct.CFE_ES_AppRecord_t
+		subcomponents
+			RecordUsed: data Base_Types::Boolean;
+			AppType: data Base_Types::Unsigned_32; -- 1: core 2: app;
+			StartParams: data struct.CFE_ES_AppStartParams_t;
+			StateRecord: data struct.CFE_ES_AppState_t;
+			TaskInfo: data struct.CFE_ES_MainTaskInfo_t;
+	end struct.CFE_ES_AppRecord_t;
+
+	data implementation struct.CFE_ES_AppStartParams_t
+		subcomponents
+			Name:  data Base_Types::String;
+			EntryPoint: data Base_Types::String;
+			FileName: data Base_Types::String;
+			StackSize: data Base_Types::Unsigned_32;
+			StartAddress: data Base_Types::Unsigned_64;
+			ModuleId: data Base_Types::Unsigned_32;
+			ExceptionAction: data Base_Types::Unsigned_16;
+			Priority: data Base_Types::Unsigned_16;
+	end struct.CFE_ES_AppStartParams_t;
+
+	data implementation struct.CFE_ES_AppState_t
+		subcomponents
+			AppControlRequest: data Base_Types::Unsigned_32;
+			AppState: data Base_Types::Unsigned_32;
+			AppTimer: data Base_Types::Integer_32;
+	end struct.CFE_ES_AppState_t;
+
+	data implementation struct.CFE_ES_MainTaskInfo_t
+		subcomponents
+			MainTaskId: data Base_Types::Unsigned_32;
+			MainTaskName: data Base_Types::String;
+			NumOfChildTasks: data Base_Types::Integer_32;
+	end struct.CFE_ES_MainTaskInfo_t;
+	
+end Data_ES;
+

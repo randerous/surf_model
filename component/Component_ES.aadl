@@ -1,0 +1,7 @@
+package Component_ES
+public
+	with Component;
+
+	thread es extends Component::app_thread
+	end es;
+end Component_ES;

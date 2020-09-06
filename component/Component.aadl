@@ -1,0 +1,23 @@
+package Component
+public
+	with Lib_SB;
+
+	with Lib_ES;
+
+	with Lib_EVS;
+
+	thread app_thread
+		features
+			RegisterApp: feature group Lib_ES::Lib_RegisterApp;
+			RestartApp: feature group Lib_ES::Lib_RestartApp;
+			DeleteApp: feature group Lib_ES::Lib_DeleteApp;
+			CreatePipe: feature group Lib_SB::Com_CreatePipe;
+			DeletePipe: feature group Lib_SB::Com_DeletePipe;
+			Subscribe: feature group Lib_SB::Com_Subscribe;
+			Unsubscribe: feature group Lib_SB::Com_Unsubscribe;
+			SendMsg: feature group Lib_SB::Com_SendMsg;
+			Register: feature group Lib_EVS::Com_Register;
+			Unregister: feature group Lib_EVS::Com_Unregister;
+			SendEvent: feature group Lib_EVS::Com_SendEvent;
+	end app_thread;
+end Component;

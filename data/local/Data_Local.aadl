@@ -1,0 +1,15 @@
+package Data_Local
+public
+	with Base_Types;
+
+	data struct
+	end struct;
+
+	data implementation struct.handler
+		subcomponents
+			TaskId: data Base_Types::Unsigned_32;
+			AppId: data Base_Types::Unsigned_32;
+			PipeId: data Base_Types::Unsigned_8;
+			AvailablePipe: data Base_Types::Unsigned_8;
+	end struct.handler;
+end Data_Local;

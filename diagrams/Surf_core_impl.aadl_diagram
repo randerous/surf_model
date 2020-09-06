@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="fda13fb7-b8db-4c1a-8b40-9a9b22f7f11a" manual="true">
+    <element uuid="d95bfe08-1cd1-4846-99df-9753de9c694e" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>createpipe</seg>
+      </bo>
+      <position y="308.0"/>
+      <size width="94.0" height="44.0"/>
+    </element>
+    <element uuid="b64ec80e-81c4-4958-9b04-2b719fe99770" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>deleteapp</seg>
+      </bo>
+      <position y="778.0"/>
+      <size width="89.0" height="44.0"/>
+    </element>
+    <element uuid="e73e1c10-bc9c-4fbb-a6a0-a9038a911517" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>deletepipe</seg>
+      </bo>
+      <position y="426.0"/>
+      <size width="93.0" height="44.0"/>
+    </element>
+    <element uuid="256675a4-3f30-4d0e-87f1-093223e6feac" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>registerapp</seg>
+      </bo>
+      <position y="896.0"/>
+      <size width="100.0" height="44.0"/>
+    </element>
+    <element uuid="cc96dc3a-0cf8-450a-8b8d-2a3202daec59" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>restartapp</seg>
+      </bo>
+      <position y="191.0"/>
+      <size width="92.0" height="44.0"/>
+    </element>
+    <element uuid="04bf9247-68eb-46a2-b300-8f5788a0a3d7" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>sendmsg</seg>
+      </bo>
+      <position y="73.0"/>
+      <size width="81.0" height="44.0"/>
+    </element>
+    <element uuid="c9374c31-ec50-4719-aaca-d1d534b6d1d7" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>subscribe</seg>
+      </bo>
+      <position y="543.0"/>
+      <size width="86.0" height="44.0"/>
+    </element>
+    <element uuid="c2fea8bb-4cf9-4fda-8814-511a45e0ec16" manual="true" dockArea="left">
+      <bo>
+        <seg>feature</seg>
+        <seg>unsubscribe</seg>
+      </bo>
+      <position y="661.0"/>
+      <size width="100.0" height="44.0"/>
+    </element>
+    <element uuid="aa83f0a5-4bca-460e-866e-b67df4edb5ce" manual="true">
+      <bo>
+        <seg>realization</seg>
+      </bo>
+    </element>
+    <element uuid="45e5a6f1-3064-4af2-821e-c909cb52b328" manual="true">
+      <element uuid="c971c337-b9f5-4b40-82da-7560558da18d" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>createpipe</seg>
+        </bo>
+        <position y="118.0"/>
+        <size width="94.0" height="44.0"/>
+      </element>
+      <element uuid="bd082333-fb9d-4c78-975d-eb511bf5e253" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deleteapp</seg>
+        </bo>
+        <position y="334.0"/>
+        <size width="89.0" height="44.0"/>
+      </element>
+      <element uuid="1820366c-e18a-4fe9-a83e-1f36fbdcc5a4" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deletepipe</seg>
+        </bo>
+        <position y="172.0"/>
+        <size width="93.0" height="44.0"/>
+      </element>
+      <element uuid="1d8f1134-ad6c-4559-8bb4-e32d03494330" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>registerapp</seg>
+        </bo>
+        <position y="388.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <element uuid="4bc1a05f-a1d1-42c1-803b-b8960fa6d787" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>restartapp</seg>
+        </bo>
+        <position y="64.0"/>
+        <size width="92.0" height="44.0"/>
+      </element>
+      <element uuid="a1a95721-a560-4cdd-ab23-baa6cdbaddcf" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sendmsg</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="81.0" height="44.0"/>
+      </element>
+      <element uuid="358390ba-c8f7-434a-a268-5c1f9b3603a5" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>subscribe</seg>
+        </bo>
+        <position y="226.0"/>
+        <size width="86.0" height="44.0"/>
+      </element>
+      <element uuid="61253846-e0f8-4008-bdb0-265d287ae4eb" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>unsubscribe</seg>
+        </bo>
+        <position y="280.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>es</seg>
+      </bo>
+      <position x="429.0" y="59.0"/>
+      <size width="274.0" height="442.0"/>
+    </element>
+    <element uuid="ef24be6b-969c-4e68-bbe5-9f29d749753c" manual="true">
+      <element uuid="3f40add6-f8b7-4855-8758-4583a7233657" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deleteapp</seg>
+        </bo>
+        <position y="64.0"/>
+        <size width="89.0" height="44.0"/>
+      </element>
+      <element uuid="8bf42eec-7317-4e08-9634-126bb5e2bb9d" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>registerapp</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <element uuid="b067a414-b44d-42b6-9760-03dc8f6e612f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>restartapp</seg>
+        </bo>
+        <position y="118.0"/>
+        <size width="92.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>es_lib</seg>
+      </bo>
+      <position x="112.0" y="59.0"/>
+      <size width="297.0" height="172.0"/>
+    </element>
+    <element uuid="2c9f4fca-96e6-45ea-a8ae-c1faca52504c" manual="true">
+      <element uuid="0a5607ff-8318-473f-ad71-131964c69122" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>createpipe</seg>
+        </bo>
+        <position y="118.0"/>
+        <size width="94.0" height="44.0"/>
+      </element>
+      <element uuid="5a110ca3-19e8-468c-a9a0-122171f78a9a" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deleteapp</seg>
+        </bo>
+        <position y="334.0"/>
+        <size width="89.0" height="44.0"/>
+      </element>
+      <element uuid="e1e92e06-313b-429a-b284-29cdffb08c3a" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deletepipe</seg>
+        </bo>
+        <position y="172.0"/>
+        <size width="93.0" height="44.0"/>
+      </element>
+      <element uuid="db2ae051-7778-407a-8523-d1796ae5f047" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>registerapp</seg>
+        </bo>
+        <position y="388.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <element uuid="5ce6dd0b-4014-4fd8-996f-a87ebe4b8de6" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>restartapp</seg>
+        </bo>
+        <position y="64.0"/>
+        <size width="92.0" height="44.0"/>
+      </element>
+      <element uuid="0836f78e-e9fd-4a5f-b01e-30d8e574d76f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sendmsg</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="81.0" height="44.0"/>
+      </element>
+      <element uuid="954de01e-3ecc-42d9-a7e2-4fc3de1fa62f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>subscribe</seg>
+        </bo>
+        <position y="226.0"/>
+        <size width="86.0" height="44.0"/>
+      </element>
+      <element uuid="d134c6f5-c068-4ede-844c-7e4304e6bfd5" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>unsubscribe</seg>
+        </bo>
+        <position y="280.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>evs</seg>
+      </bo>
+      <position x="1017.0" y="59.0"/>
+      <size width="281.0" height="442.0"/>
+    </element>
+    <element uuid="b7ce9e26-7cc7-434e-a623-2d7b0c217334" manual="true">
+      <element uuid="1aca294a-76e1-4ab9-804a-a310d2174a10" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>createpipe</seg>
+        </bo>
+        <position y="118.0"/>
+        <size width="94.0" height="44.0"/>
+      </element>
+      <element uuid="b0becedf-0aba-4f7c-8d45-7f9ed654112f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deleteapp</seg>
+        </bo>
+        <position y="334.0"/>
+        <size width="89.0" height="44.0"/>
+      </element>
+      <element uuid="45cdef0d-3aaf-4ac4-aaca-17a8861c7d86" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deletepipe</seg>
+        </bo>
+        <position y="172.0"/>
+        <size width="93.0" height="44.0"/>
+      </element>
+      <element uuid="78a619c8-d088-4ae2-9fd0-6c4db6b2dac4" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>registerapp</seg>
+        </bo>
+        <position y="388.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <element uuid="1b9f8930-1734-49f4-b93b-d417d7ed63db" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>restartapp</seg>
+        </bo>
+        <position y="64.0"/>
+        <size width="92.0" height="44.0"/>
+      </element>
+      <element uuid="07cd1b28-1221-401e-be8d-56794b8826ab" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sendmsg</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="81.0" height="44.0"/>
+      </element>
+      <element uuid="721f400e-5830-4c59-b615-3cfaf59e7c24" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>subscribe</seg>
+        </bo>
+        <position y="226.0"/>
+        <size width="86.0" height="44.0"/>
+      </element>
+      <element uuid="c4faac4b-93f8-4ab4-9f77-652262d27846" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>unsubscribe</seg>
+        </bo>
+        <position y="280.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>sb</seg>
+      </bo>
+      <position x="723.0" y="59.0"/>
+      <size width="274.0" height="442.0"/>
+    </element>
+    <element uuid="a46349a8-f50d-42f5-a798-ad1aedad9c3d" manual="true">
+      <element uuid="263a870e-cd08-4e12-a280-cde6d498a488" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>createpipe</seg>
+        </bo>
+        <position y="264.0"/>
+        <size width="94.0" height="44.0"/>
+      </element>
+      <element uuid="ad4aec74-80c0-477d-86d0-8bfb54ef9022" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deletepipe</seg>
+        </bo>
+        <position y="318.0"/>
+        <size width="93.0" height="44.0"/>
+      </element>
+      <element uuid="1ae9bbf5-8b4e-4cb0-b822-a5caf487bba2" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>es_msg</seg>
+        </bo>
+        <position y="214.0"/>
+      </element>
+      <element uuid="a52ac316-1498-4854-bf69-dabed61b8680" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>evs_msg</seg>
+        </bo>
+        <position y="164.0"/>
+      </element>
+      <element uuid="40ab9eb1-6301-4a61-a7df-b721b6b9b26b" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sb_msg</seg>
+        </bo>
+        <position y="114.0"/>
+      </element>
+      <element uuid="319f04cc-94dc-466b-bc24-266af793e49d" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sendmsg</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="81.0" height="44.0"/>
+      </element>
+      <element uuid="f4b6ed46-4158-4632-b151-28b99cf7c956" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>subscribe</seg>
+        </bo>
+        <position y="372.0"/>
+        <size width="86.0" height="44.0"/>
+      </element>
+      <element uuid="30dea33e-161f-4f6f-bbf3-a878946d762b" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>time_msg</seg>
+        </bo>
+        <position y="64.0"/>
+      </element>
+      <element uuid="3f703ad1-b6e4-420d-83bd-8808bf128c6f" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>unsubscribe</seg>
+        </bo>
+        <position y="426.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>sb_lib</seg>
+      </bo>
+      <position x="420.0" y="521.0"/>
+      <size width="297.0" height="480.0"/>
+    </element>
+    <element uuid="485ce50f-7cc1-4a72-a097-1a0dc57a87dc" manual="true">
+      <element uuid="6b74bf79-6b19-4437-bb31-79bd4be62ba5" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>createpipe</seg>
+        </bo>
+        <position y="118.0"/>
+        <size width="94.0" height="44.0"/>
+      </element>
+      <element uuid="e05c7cf8-7756-4e1f-adbf-716b0a599452" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deleteapp</seg>
+        </bo>
+        <position y="334.0"/>
+        <size width="89.0" height="44.0"/>
+      </element>
+      <element uuid="774e12c4-4b87-41e1-87e4-30aecab972e8" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>deletepipe</seg>
+        </bo>
+        <position y="172.0"/>
+        <size width="93.0" height="44.0"/>
+      </element>
+      <element uuid="25ff2db1-acab-4a2e-9a7e-1cddcad96029" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>registerapp</seg>
+        </bo>
+        <position y="388.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <element uuid="37fdebd2-8161-4a40-b5c1-57a269c981b6" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>restartapp</seg>
+        </bo>
+        <position y="64.0"/>
+        <size width="92.0" height="44.0"/>
+      </element>
+      <element uuid="7904c6ef-e4a3-454c-a454-8cdde5fc9f9b" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>sendmsg</seg>
+        </bo>
+        <position y="10.0"/>
+        <size width="81.0" height="44.0"/>
+      </element>
+      <element uuid="6448c006-44fa-404f-b145-0f642e7165e2" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>subscribe</seg>
+        </bo>
+        <position y="226.0"/>
+        <size width="86.0" height="44.0"/>
+      </element>
+      <element uuid="21d96abb-e429-4e06-8160-57c7219befce" manual="true" dockArea="left">
+        <bo>
+          <seg>feature</seg>
+          <seg>unsubscribe</seg>
+        </bo>
+        <position y="280.0"/>
+        <size width="100.0" height="44.0"/>
+      </element>
+      <bo>
+        <seg>subcomponent</seg>
+        <seg>time</seg>
+      </bo>
+      <position x="112.0" y="521.0"/>
+      <size width="288.0" height="442.0"/>
+    </element>
+    <bo>
+      <seg>classifier</seg>
+      <seg>core.impl</seg>
+    </bo>
+    <position x="12.0" y="12.0"/>
+    <size width="1310.0" height="1013.0"/>
+  </element>
+  <config type="structure" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>classifier</seg>
+      <seg>surf::core.impl</seg>
+    </context>
+  </config>
+</diagram:Diagram>

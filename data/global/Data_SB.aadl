@@ -1,0 +1,98 @@
+package Data_SB
+public
+	with Base_Types;
+	
+	data sb
+--		features
+--			read: out feature group plug;
+	end sb;
+	
+	data struct
+	end struct;
+	
+--	feature group slot
+--		features
+--			PipeTbl: requires data access struct.CFE_SB_PipeD_t;
+--			RoutingTbl: requires data access struct.CFE_SB_RouteEntry_t;
+--			AvailablePipe: requires data access Base_Types::Unsigned_8;
+--	end slot;
+--	
+--	feature group plug
+--		features
+--			PipeTbl: provides data access struct.CFE_SB_PipeD_t;
+--			RoutingTbl: provides data access struct.CFE_SB_RouteEntry_t;
+--			AvailablePipe: provides data access Base_Types::Unsigned_8;
+--	inverse of slot
+--	end plug;
+
+	
+
+	data implementation sb.cfe_sb_t
+		subcomponents
+			PipeTbl: data struct.CFE_SB_PipeD_t;
+			RoutingTbl: data struct.CFE_SB_RouteEntry_t;
+			AvailablePipe: data Base_Types::Unsigned_8;
+	end sb.cfe_sb_t;
+	
+	data implementation struct.CFE_SB_PipeD_t
+		subcomponents
+			InUse: data Base_Types::Unsigned_8;
+			PipeId: data Base_Types::Unsigned_8;
+			PipeName: data Base_Types::String;
+			AppName: data Base_Types::String;
+			Spare: data Base_Types::Unsigned_16;
+			Appid: data Base_Types::Unsigned_32;
+			SysQueueId: data Base_Types::Unsigned_32;
+			LastSender: data Base_Types::Unsigned_32;
+			QueueDepth: data Base_Types::Unsigned_16;
+			SendErrors: data Base_Types::Unsigned_16;
+			CurrentBuff: data struct.CFE_SB_BufferD_t;
+			ToTrashBuff: data struct.CFE_SB_BufferD_t;
+			MsgQueue: data Base_Types::String;
+			ReadIdx: data Base_Types::Unsigned_8;
+			WriteIdx: data Base_Types::Unsigned_8;
+	end struct.CFE_SB_PipeD_t;
+	
+	data implementation struct.CFE_SB_BufferD_t
+		subcomponents
+			MsgId: data Base_Types::Unsigned_16;
+			UseCount: data Base_Types::Unsigned_16;
+			Size: data Base_Types::Unsigned_32;
+			Buffer: data Base_Types::String;
+			Sender: data struct.CFE_SB_SenderId_t;
+	end struct.CFE_SB_BufferD_t;
+	
+	data implementation struct.CFE_SB_SenderId_t
+		subcomponents
+			ProcessorId: data Base_Types::Unsigned_32;
+			AppName: data Base_Types::String;
+	end struct.CFE_SB_SenderId_t;
+	
+	data implementation struct.CFE_SB_RouteEntry_t
+		subcomponents
+			MsgId: data Base_Types::Unsigned_16;
+			Destinations: data Base_Types::Unsigned_16;
+			SeqCnt: data Base_Types::Unsigned_32;
+			RouteList: data struct.CFE_SB_DestinationD_t;
+			AvailableRoute: data Base_Types::Unsigned_8;
+	end struct.CFE_SB_RouteEntry_t;
+	
+	data implementation struct.CFE_SB_DestinationD_t
+		subcomponents
+			PipeId: data Base_Types::Unsigned_8;
+			Active: data Base_Types::Unsigned_8;
+			MsgId2PipeLim: data Base_Types::Unsigned_16;
+			BuffCount: data Base_Types::Unsigned_16;
+			DestCnt: data Base_Types::Unsigned_16;
+			Scope: data Base_Types::Unsigned_8;
+			Spare: data Base_Types::Unsigned_8[3];
+	end struct.CFE_SB_DestinationD_t;
+	
+	data implementation struct.CFE_SB_Msg_t
+		subcomponents
+			MsgId: data Base_Types::Unsigned_16;
+			EvtId: data Base_Types::Unsigned_16;
+			Content: data Base_Types::String;
+	end struct.CFE_SB_Msg_t;
+	
+end Data_SB;

@@ -1,0 +1,112 @@
+package Lib_SB
+public
+	with Data_SB;
+
+	with Base_Types;
+
+	with Lib;
+
+	thread sb_lib
+		features
+			CreatePipe: feature group Lib_CreatePipe;
+			DeletePipe: feature group Lib_DeletePipe;
+			Subscribe: feature group Lib_Subscribe;
+			Unsubscribe: feature group Lib_Unsubscribe;
+			SendMsg: feature group Lib_SendMsg;
+			es_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+			sb_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+			evs_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+			time_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+	end sb_lib;
+
+	thread implementation sb_lib.impl
+		subcomponents
+			es_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
+			--按照 消息-管道 的对应添加 路由 数据结构
+	end sb_lib.impl;
+
+--------------------------------------------------------------------------
+------------------------------CreatePipe----------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_CreatePipe extends Lib::LibPort
+		features
+			AppId: in data port Base_Types::Unsigned_32;
+			PipeId: in data port Base_Types::Unsigned_8;
+			Depth: in data port Base_Types::Unsigned_16;
+			PipeName: in data port Base_Types::String;
+	end Lib_CreatePipe;
+
+	feature group Com_CreatePipe extends Lib::ComPort
+		features
+			AppId: out data port Base_Types::Unsigned_32;
+			PipeId: out data port Base_Types::Unsigned_8;
+			Depth: out data port Base_Types::Unsigned_16;
+			PipeName: out data port Base_Types::String;
+	inverse of Lib_CreatePipe
+	end Com_CreatePipe;
+
+--------------------------------------------------------------------------
+------------------------------DeletePipe----------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_DeletePipe extends Lib::LibPort
+		features
+			PipeId: in data port Base_Types::Unsigned_8;
+			AppId: in data port Base_Types::Unsigned_32;
+	end Lib_DeletePipe;
+
+	feature group Com_DeletePipe extends Lib::ComPort
+		features
+			PipeId: out data port Base_Types::Unsigned_8;
+			AppId: out data port Base_Types::Unsigned_32;
+	inverse of Lib_DeletePipe
+	end Com_DeletePipe;
+
+--------------------------------------------------------------------------
+------------------------------Subscribe-----------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_Subscribe extends Lib::LibPort
+		features
+			MsgId: in data port Base_Types::Unsigned_16;
+			PipeId: in data port Base_Types::Unsigned_8;
+	end Lib_Subscribe;
+
+	feature group Com_Subscribe extends Lib::ComPort
+		features
+			MsgId: out data port Base_Types::Unsigned_16;
+			PipeId: out data port Base_Types::Unsigned_8;
+	inverse of Lib_Subscribe
+	end Com_Subscribe;
+
+--------------------------------------------------------------------------
+------------------------------Unsubscribe---------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_Unsubscribe extends Lib::LibPort
+		features
+			MsgId: in data port Base_Types::Unsigned_16;
+			PipeId: in data port Base_Types::Unsigned_8;
+	end Lib_Unsubscribe;
+
+	feature group Com_Unsubscribe extends Lib::ComPort
+		features
+			MsgId: out data port Base_Types::Unsigned_16;
+			PipeId: out data port Base_Types::Unsigned_8;
+	inverse of Lib_Unsubscribe
+	end Com_Unsubscribe;
+
+--------------------------------------------------------------------------
+--------------------------------SendMsg-----------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_SendMsg extends Lib::LibPort
+		features
+			Msg: in data port Data_SB::struct.CFE_SB_Msg_t;
+	end Lib_SendMsg;
+
+	feature group Com_SendMsg extends Lib::ComPort
+		features
+			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+	inverse of Lib_SendMsg
+	end Com_SendMsg;
+end Lib_SB;

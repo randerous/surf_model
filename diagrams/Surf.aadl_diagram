@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="ASCII"?>
+<diagram:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:diagram="http://osate.org/diagram" formatVersion="7">
+  <element uuid="ed58a977-4f1f-4cb4-ac8d-f918d1a46b62" manual="true">
+    <element uuid="98abb981-d09d-4ad7-8f0c-4ec8c4fe3bb7" manual="true">
+      <element uuid="92dabd25-11a3-464d-aea0-ef7d9e8a00be" manual="true">
+        <bo>
+          <seg>realization</seg>
+        </bo>
+        <bendpoints>
+          <point x="247.0" y="206.0"/>
+          <point x="259.0" y="206.0"/>
+        </bendpoints>
+      </element>
+      <element uuid="a26cc64a-462e-45d6-9098-c4f5f5cfdcc9" manual="true">
+        <element uuid="72f5c9e7-4a6a-4388-bbb3-2a5c30c09af5" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>createpipe</seg>
+          </bo>
+          <position y="118.0"/>
+          <size width="94.0" height="44.0"/>
+        </element>
+        <element uuid="68b1740e-007a-402f-9093-fa9046b3e734" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>deleteapp</seg>
+          </bo>
+          <position y="496.0"/>
+          <size width="89.0" height="44.0"/>
+        </element>
+        <element uuid="85aee983-5f63-401d-8664-98f45a1979c2" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>deletepipe</seg>
+          </bo>
+          <position y="172.0"/>
+          <size width="93.0" height="44.0"/>
+        </element>
+        <element uuid="f4bfe130-4ccd-4a35-8312-d092271b735f" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>register</seg>
+          </bo>
+          <position y="226.0"/>
+          <size width="75.0" height="44.0"/>
+        </element>
+        <element uuid="293c7c2c-1dff-4fe9-9dba-79bf96316f2b" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>registerapp</seg>
+          </bo>
+          <position y="550.0"/>
+          <size width="100.0" height="44.0"/>
+        </element>
+        <element uuid="98b13a6b-6b7a-4ba4-b0d9-d608846ebf99" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>restartapp</seg>
+          </bo>
+          <position y="64.0"/>
+          <size width="92.0" height="44.0"/>
+        </element>
+        <element uuid="71e3b124-232e-4e8d-8d39-6e10467f9c16" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>sendevent</seg>
+          </bo>
+          <position y="280.0"/>
+          <size width="91.0" height="44.0"/>
+        </element>
+        <element uuid="02c67eae-fd5d-4793-8e7d-bbdee5aa58b7" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>sendmsg</seg>
+          </bo>
+          <position y="10.0"/>
+          <size width="81.0" height="44.0"/>
+        </element>
+        <element uuid="d548dc33-be18-4ff4-831c-624de3dd744d" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>subscribe</seg>
+          </bo>
+          <position y="388.0"/>
+          <size width="86.0" height="44.0"/>
+        </element>
+        <element uuid="1acedd9b-7eef-4475-983e-4f2be447bb13" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>unregister</seg>
+          </bo>
+          <position y="334.0"/>
+          <size width="88.0" height="44.0"/>
+        </element>
+        <element uuid="b9d82e9f-57eb-46a2-bc65-2e62862663a2" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>unsubscribe</seg>
+          </bo>
+          <position y="442.0"/>
+          <size width="100.0" height="44.0"/>
+        </element>
+        <element uuid="f1c69487-a37c-4322-8347-4e03ec2ae784" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>sc_type</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>subcomponent</seg>
+          <seg>app</seg>
+        </bo>
+        <position x="391.0" y="59.0"/>
+        <size width="398.0" height="604.0"/>
+      </element>
+      <element uuid="33d8498a-cc9f-4497-8939-b106f0ddc973" manual="true">
+        <element uuid="a964ba89-99c7-4094-bea1-c496b2c238c8" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>createpipe</seg>
+          </bo>
+          <position y="118.0"/>
+          <size width="94.0" height="44.0"/>
+        </element>
+        <element uuid="c866647c-8768-4522-be24-e085ea169f89" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>deleteapp</seg>
+          </bo>
+          <position y="496.0"/>
+          <size width="89.0" height="44.0"/>
+        </element>
+        <element uuid="338b3d71-adb5-460b-948b-d65a797251a5" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>deletepipe</seg>
+          </bo>
+          <position y="172.0"/>
+          <size width="93.0" height="44.0"/>
+        </element>
+        <element uuid="3828414e-7c49-4769-91ab-757635940a20" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>gettime</seg>
+          </bo>
+          <position y="550.0"/>
+          <size width="77.0" height="44.0"/>
+        </element>
+        <element uuid="7d0b13cf-53e8-44a0-86b3-b52af89c6053" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>register</seg>
+          </bo>
+          <position y="226.0"/>
+          <size width="75.0" height="44.0"/>
+        </element>
+        <element uuid="527d48d1-1575-4e35-83ca-77251cb54a1b" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>registerapp</seg>
+          </bo>
+          <position y="604.0"/>
+          <size width="100.0" height="44.0"/>
+        </element>
+        <element uuid="b160e55a-ac51-46a4-b305-9c92a3152c0e" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>restartapp</seg>
+          </bo>
+          <position y="64.0"/>
+          <size width="92.0" height="44.0"/>
+        </element>
+        <element uuid="3f6f8b20-0d23-4cd7-9beb-36e2e0575701" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>sendevent</seg>
+          </bo>
+          <position y="280.0"/>
+          <size width="91.0" height="44.0"/>
+        </element>
+        <element uuid="f06e6fd3-7ddf-4c11-b6ae-a807e954f317" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>sendmsg</seg>
+          </bo>
+          <position y="10.0"/>
+          <size width="81.0" height="44.0"/>
+        </element>
+        <element uuid="e62d88fd-cb94-4016-b734-99ea5c90cdd5" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>subscribe</seg>
+          </bo>
+          <position y="388.0"/>
+          <size width="86.0" height="44.0"/>
+        </element>
+        <element uuid="c9efd240-4185-4145-9877-93f26c752d0c" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>unregister</seg>
+          </bo>
+          <position y="334.0"/>
+          <size width="88.0" height="44.0"/>
+        </element>
+        <element uuid="fad3828a-05e3-4af7-ba4c-0757ebc2c63a" manual="true" dockArea="left">
+          <bo>
+            <seg>feature</seg>
+            <seg>unsubscribe</seg>
+          </bo>
+          <position y="442.0"/>
+          <size width="100.0" height="44.0"/>
+        </element>
+        <element uuid="b604d694-d19c-406e-a77f-1780d48db3bb" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>es</seg>
+          </bo>
+          <position x="112.0" y="59.0"/>
+          <size width="74.0" height="35.0"/>
+        </element>
+        <element uuid="5d368732-3668-4ecb-a10e-1c6c0d44faab" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>es_lib</seg>
+          </bo>
+          <position x="229.0" y="169.0"/>
+          <size width="97.0" height="35.0"/>
+        </element>
+        <element uuid="62122f59-c607-4a5c-8122-1ec82b80e061" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>evs</seg>
+          </bo>
+          <position x="112.0" y="114.0"/>
+          <size width="81.0" height="35.0"/>
+        </element>
+        <element uuid="c05d7e7b-c4c7-44be-abaf-eed44d178cfb" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>evs_lib</seg>
+          </bo>
+          <position x="112.0" y="224.0"/>
+          <size width="104.0" height="35.0"/>
+        </element>
+        <element uuid="9389cb6d-9d16-442d-8a85-ffff7e2c6f5a" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>sb</seg>
+          </bo>
+          <position x="206.0" y="59.0"/>
+          <size width="74.0" height="35.0"/>
+        </element>
+        <element uuid="ef6e8242-e33c-46ec-b743-f5294b4227bc" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>sb_lib</seg>
+          </bo>
+          <position x="112.0" y="169.0"/>
+          <size width="97.0" height="35.0"/>
+        </element>
+        <element uuid="72c8e94e-ba95-4d5a-b0de-f285b7299393" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>time</seg>
+          </bo>
+          <position x="213.0" y="114.0"/>
+          <size width="88.0" height="35.0"/>
+        </element>
+        <element uuid="2766f548-17c7-43d5-9cb8-178ba940fc15" manual="true">
+          <bo>
+            <seg>subcomponent</seg>
+            <seg>time_lib</seg>
+          </bo>
+          <position x="236.0" y="224.0"/>
+          <size width="111.0" height="35.0"/>
+        </element>
+        <element uuid="2450b3de-f56e-434e-bb9d-fd96c35aab8f" manual="true">
+          <bo>
+            <seg>tag</seg>
+            <seg>sc_type</seg>
+          </bo>
+        </element>
+        <bo>
+          <seg>subcomponent</seg>
+          <seg>core</seg>
+        </bo>
+        <position x="12.0" y="59.0"/>
+        <size width="359.0" height="658.0"/>
+      </element>
+      <bo>
+        <seg>classifier</seg>
+        <seg>surf.impl</seg>
+      </bo>
+      <position x="63.0" y="38.0"/>
+      <size width="801.0" height="729.0"/>
+    </element>
+    <bo>
+      <seg>package</seg>
+      <seg>surf</seg>
+    </bo>
+    <position x="12.0" y="12.0"/>
+    <size width="876.0" height="779.0"/>
+  </element>
+  <config type="package" connectionPrimaryLabelsVisible="false">
+    <enabledAadlProperties/>
+    <context>
+      <seg>package</seg>
+      <seg>surf</seg>
+    </context>
+  </config>
+</diagram:Diagram>
