@@ -1,0 +1,41 @@
+package Lib_TIME
+public
+	with Lib;
+
+	with Data_TIME;
+	
+	feature group time_api_provide
+		features
+			GetTime: feature group Lib_GetTime;
+	end time_api_provide;
+	
+	feature group time_api_require
+		features
+			GetTime: feature group Lib_TIME::Com_GetTime;
+	inverse of time_api_provide
+	end time_api_require;
+
+	thread time_lib
+		features
+			GetTime: feature group Lib_GetTime;
+	end time_lib;
+	
+	thread implementation time_lib.impl
+
+	end time_lib.impl;
+
+--------------------------------------------------------------------------
+-------------------------------GetTime------------------------------------
+--------------------------------------------------------------------------
+	feature group Lib_GetTime extends Lib::LibPort
+		features
+			CurrentTime: out data port Data_TIME::struct.CFE_TIME_SysTime_t;
+	end Lib_GetTime;
+
+	feature group Com_GetTime extends Lib::ComPort
+		features
+			CurrentTime: in data port Data_TIME::struct.CFE_TIME_SysTime_t;
+	inverse of Lib_GetTime
+	end Com_GetTime;
+
+end Lib_TIME;

@@ -1,0 +1,100 @@
+package Component_Group_Core
+public
+	with Component_ES;
+
+	with Component_SB;
+
+	with Component_EVS;
+
+	with Component_TIME;
+
+	with Lib_ES;
+
+	with Lib_SB;
+
+	with Lib_EVS;
+
+	with Lib_TIME;
+	
+	thread group core
+		features
+			ES_API: feature group Lib_ES::es_api_provide;
+			SB_API: feature group Lib_SB::sb_api_provide;
+			EVS_API: feature group Lib_EVS::evs_api_provide;
+			TIME_API: feature group Lib_TIME::time_api_provide;
+		annex agree {**
+			--0: running 1: restart  关于staterecord代表哪个app，
+			--在lib中进行处理识别是哪个数据字段，然后直接返回处理结果
+			eq SUCCESS: int = 0;
+			eq ERR_APPID: int = 1;
+			
+			eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+			
+			eq MSG_TOO_BIG: int = 9;
+			
+			eq APP_ILLEGAL_APP_ID: int = 10;
+			eq UNKNOWN_FILTER: int = 11;
+			eq ERR_BUFFER: int = 12;
+			
+			eq APP_NOT_REGISTERED: int = 13;
+			
+			eq NO_MESSAGE: int = 14;
+			eq TIME_OUT: int = 15;
+			eq PIPE_RD_ERR: int = 16;
+			
+			guarantee "": ES_API.RestartApp.Valid = true => ES_API.RestartApp.Result = SUCCESS or ES_API.RestartApp.Result = ERR_APPID;
+			guarantee "": ES_API.DeleteApp.Valid = true => ES_API.DeleteApp.Result = SUCCESS or ES_API.DeleteApp.Result = ERR_APPID;
+			guarantee "": SB_API.CreatePipe.Valid = true => SB_API.CreatePipe.Result = SUCCESS or SB_API.CreatePipe.Result = INVALID_PIPE
+				or SB_API.CreatePipe.Result = BAD_ARGUMENT or SB_API.CreatePipe.Result = MAX_PIPES_MET or SB_API.CreatePipe.Result = PIPE_CR_ERR;
+			guarantee "": SB_API.DeletePipe.Valid = true => SB_API.DeletePipe.Result = SUCCESS or SB_API.DeletePipe.Result = BAD_ARGUMENT;
+			guarantee "": SB_API.Subscribe.Valid = true => SB_API.Subscribe.Result = SUCCESS or SB_API.Subscribe.Result = MAX_MSGS_MET
+				or SB_API.Subscribe.Result = MAX_DESTS_MET or SB_API.Subscribe.Result = BUF_ALOC_ERR;
+			guarantee "": SB_API.Unsubscribe.Valid = true => SB_API.Unsubscribe.Result = SUCCESS or SB_API.Unsubscribe.Result = BAD_ARGUMENT;
+			guarantee "": SB_API.SendMsg.Valid = true => SB_API.SendMsg.Result = SUCCESS or SB_API.SendMsg.Result = BAD_ARGUMENT
+				or SB_API.SendMsg.Result = MSG_TOO_BIG or SB_API.SendMsg.Result = BUF_ALOC_ERR;
+			guarantee "": SB_API.RcvMsg.Valid = true => SB_API.RcvMsg.Result = SUCCESS or SB_API.RcvMsg.Result = BAD_ARGUMENT
+				or SB_API.RcvMsg.Result = NO_MESSAGE or SB_API.RcvMsg.Result = TIME_OUT or SB_API.RcvMsg.Result = PIPE_RD_ERR;	
+			guarantee "": EVS_API.Register.Valid = true => EVS_API.Register.Result = SUCCESS or EVS_API.Register.Result = ERR_APPID
+				or EVS_API.Register.Result = APP_ILLEGAL_APP_ID or EVS_API.Register.Result = UNKNOWN_FILTER or EVS_API.Register.Result = ERR_BUFFER;
+			guarantee "": EVS_API.Unregister.Valid = true => EVS_API.Unregister.Result = SUCCESS or EVS_API.Unregister.Result = ERR_APPID or EVS_API.Unregister.Result = APP_ILLEGAL_APP_ID
+				or EVS_API.Unregister.Result = APP_NOT_REGISTERED;	
+			guarantee "": TIME_API.GetTime.Valid = true => TIME_API.GetTime.Result = SUCCESS;
+		**};
+	end core;
+
+	thread group implementation core.impl
+		subcomponents
+			es: thread Component_ES::es;
+			sb: thread Component_SB::sb;
+			evs: thread Component_EVS::evs;
+			time: thread Component_TIME::time;
+			es_lib: thread Lib_ES::es_lib.impl;
+			sb_lib: thread Lib_SB::sb_lib.impl;
+			evs_lib: thread Lib_EVS::evs_lib.impl;
+			time_lib: thread Lib_TIME::time_lib.impl;
+		connections
+			RegisterApp: feature group ES_API.RegisterApp <-> es_lib.RegisterApp;
+			RestartApp: feature group ES_API.RestartApp <-> es_lib.RestartApp;	
+			DeleteApp: feature group ES_API.DeleteApp <-> es_lib.DeleteApp;
+			
+			CreatePipe: feature group SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			DeletePipe: feature group SB_API.DeletePipe <-> sb_lib.DeletePipe;
+			Subscribe: feature group SB_API.Subscribe <-> sb_lib.Subscribe;
+			Unsubscribe: feature group SB_API.Unsubscribe <-> sb_lib.Unsubscribe;
+			SendMsg: feature group SB_API.SendMsg <-> sb_lib.SendMsg;
+			RcvMsg: feature group SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			
+			Register: feature group EVS_API.Register <-> evs_lib.Register;
+			Unregister: feature group EVS_API.Unregister <-> evs_lib.Unregister;
+			SendEvent: feature group EVS_API.SendEvent <-> evs_lib.SendEvent;
+			
+			GetTime: feature group TIME_API.GetTime <-> time_lib.GetTime;
+	end core.impl;
+end Component_Group_Core;

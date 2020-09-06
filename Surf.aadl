@@ -1,0 +1,26 @@
+package Surf
+public
+	with Component_App;
+
+	with Component_Group_Core;
+
+	process surf
+	end surf;
+
+	process implementation surf.impl
+		subcomponents
+			app1: thread Component_App::app;
+			app2: thread Component_App::app;
+			core: thread group Component_Group_Core::core.impl;
+		connections
+			app1_es_api: feature group app1.ES_API <-> core.ES_API;
+			app1_sb_api: feature group app1.SB_API <-> core.SB_API;
+			app1_evs_api: feature group app1.EVS_API <-> core.EVS_API;
+			app1_time_api: feature group app1.TIME_API <-> core.TIME_API;
+			
+			app2_es_api: feature group app2.ES_API <-> core.ES_API;
+			app2_sb_api: feature group app2.SB_API <-> core.SB_API;
+			app2_evs_api: feature group app2.EVS_API <-> core.EVS_API;
+			app2_time_api: feature group app2.TIME_API <-> core.TIME_API;
+	end surf.impl;
+end Surf;

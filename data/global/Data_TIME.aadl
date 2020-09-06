@@ -1,0 +1,41 @@
+package Data_TIME
+public
+	with Base_Types;
+	
+	data time
+--		features
+--			read: out feature group plug;
+	end time;
+	
+	data struct
+	end struct;
+	
+--	feature group slot
+--		
+--	end slot;
+--	
+--	feature group plug
+--		
+--	inverse of slot
+--	end plug;
+
+	data implementation struct.CFE_TIME_SysTime_t
+		subcomponents
+			Seconds: data Base_Types::Unsigned_32;
+			Subseconds: data Base_Types::Unsigned_32;
+	end struct.CFE_TIME_SysTime_t;
+	
+	data implementation struct.CFE_TIME_Reference_t
+		subcomponents
+			AtToneMET: data struct.CFE_TIME_SysTime_t;
+			AtToneSTCF: data struct.CFE_TIME_SysTime_t;
+			AtToneLeaps: data Base_Types::Unsigned_16;
+			ClockSetState: data Base_Types::Unsigned_16;
+			ClockFlyState: data Base_Types::Unsigned_16;
+			AtToneLatch: data struct.CFE_TIME_SysTime_t;
+			CurrentLatch: data struct.CFE_TIME_SysTime_t;
+			TimeSinceTone: data struct.CFE_TIME_SysTime_t;
+			CurrentMET: data struct.CFE_TIME_SysTime_t;
+	end struct.CFE_TIME_Reference_t;
+	
+end Data_TIME;

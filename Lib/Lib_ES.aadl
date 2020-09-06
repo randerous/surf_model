@@ -1,0 +1,101 @@
+package Lib_ES
+public
+	with Base_Types;
+
+	with Data_ES;
+
+	with Lib;
+	
+	feature group es_api_provide
+		features
+			RegisterApp: feature group Lib_RegisterApp;
+			RestartApp: feature group Lib_RestartApp;
+			DeleteApp: feature group Lib_DeleteApp;
+	end es_api_provide;
+	
+	feature group es_api_require
+		features
+			RegisterApp: feature group Com_RegisterApp;
+			RestartApp: feature group Com_RestartApp;
+			DeleteApp: feature group Com_DeleteApp;
+	inverse of es_api_provide
+	end es_api_require;
+
+	thread es_lib
+		features
+			RegisterApp: feature group Lib_RegisterApp;
+			RestartApp: feature group Lib_RestartApp;
+			DeleteApp: feature group Lib_DeleteApp;
+	end es_lib;
+
+	thread implementation es_lib.impl
+		subcomponents
+			es_task: data Data_ES::struct.CFE_ES_TaskRecord_t;		--task info of es
+			sb_task: data Data_ES::struct.CFE_ES_TaskRecord_t;		--task info of sb
+			evs_task: data Data_ES::struct.CFE_ES_TaskRecord_t;		--task info of evs
+			time_task: data Data_ES::struct.CFE_ES_TaskRecord_t;	--task info of time
+			es_app: data Data_ES::struct.CFE_ES_AppRecord_t;		--app info of es
+			sb_app: data Data_ES::struct.CFE_ES_AppRecord_t;		--app info of sb
+			evs_app: data Data_ES::struct.CFE_ES_AppRecord_t;		--app info of evs
+			time_app: data Data_ES::struct.CFE_ES_AppRecord_t;		--app info of time
+	end es_lib.impl;
+
+--------------------------------------------------------------------------
+------------------------------RegisterApp---------------------------------
+--TaskId	|	Result
+--[0-31]	-> 0
+--other		-> (int32)0xc4000017
+--------------------------------------------------------------------------
+	feature group Lib_RegisterApp extends Lib::LibPort
+		features
+			TaskId: in data port Base_Types::Unsigned_32;
+	end Lib_RegisterApp;
+
+	feature group Com_RegisterApp extends Lib::ComPort
+		features
+			TaskId: out data port Base_Types::Unsigned_32;
+	inverse of Lib_RegisterApp
+	end Com_RegisterApp;
+--------------------------------------------------------------------------
+------------------------------RestartApp----------------------------------
+--AppId			AppType		AppState	|	Result
+--[0-31]	&	[^1]	&	[^1]		->	0
+--other			other		other		->	(int32)0xc4000001
+--------------------------------------------------------------------------
+	feature group Lib_RestartApp extends Lib::LibPort
+		features
+			AppId: in data port Base_Types::Unsigned_32;
+--			StateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
+	end Lib_RestartApp;
+
+	feature group Com_RestartApp extends Lib::ComPort
+		features
+			AppId: out data port Base_Types::Unsigned_32;
+--			StateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
+	inverse of Lib_RestartApp
+	end Com_RestartApp;
+--------------------------------------------------------------------------
+------------------------------DeleteApp-----------------------------------
+--AppId			AppType		AppState	|	Result
+--[0-31]	&	[^1]	&	[^1]		->	0
+--other			other		other		->	(int32)0xc4000001
+--------------------------------------------------------------------------
+	feature group Lib_DeleteApp extends Lib::LibPort
+		features
+			AppId: in data port Base_Types::Unsigned_32;
+			AppType: in data port Base_Types::Unsigned_32;
+			StateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
+			
+			NewStateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
+	end Lib_DeleteApp;
+
+	feature group Com_DeleteApp extends Lib::ComPort
+		features
+			AppId: out data port Base_Types::Unsigned_32;
+			AppType: out data port Base_Types::Unsigned_32;
+			StateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
+			
+			NewStateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
+	inverse of Lib_DeleteApp
+	end Com_DeleteApp;
+end Lib_ES;

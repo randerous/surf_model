@@ -1,0 +1,45 @@
+package Data_EVS
+public
+	with Base_Types;
+	
+	data evs
+--		features
+--			read: out feature group plug;
+	end evs;
+	
+	data struct
+	end struct;
+	
+--	feature group slot
+--		features
+--			AppData: requires data access struct.EVS_AppData_t;
+--	end slot;
+--	
+--	feature group plug
+--		features
+--			AppData: provides data access struct.EVS_AppData_t;
+--	inverse of slot
+--	end plug;
+
+--	data implementation evs.CFE_EVS_GlobalData_t
+--		subcomponents
+--			AppData: data struct.EVS_AppData_t;
+--	end evs.CFE_EVS_GlobalData_t;
+	
+	data implementation struct.EVS_AppData_t
+		subcomponents
+			BinFilters: data struct.EVS_BinFilter_t;
+			ActiveFlag: data Base_Types::Unsigned_8;
+			EventTypesActiveFlag: data Base_Types::Unsigned_8;
+			EventCount: data Base_Types::Unsigned_16;
+			RegisterFlag: data Base_Types::Unsigned_16;
+	end struct.EVS_AppData_t;
+	
+	data implementation struct.EVS_BinFilter_t
+		subcomponents
+			EventID: data Base_Types::Integer_16;
+			Mask: data Base_Types::Unsigned_8;
+			Count: data Base_Types::Unsigned_8;
+			Padding: data Base_Types::Unsigned_16;
+	end struct.EVS_BinFilter_t;
+end Data_EVS;

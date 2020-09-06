@@ -1,0 +1,7 @@
+package Component_EVS
+public
+	with Component;
+
+	thread evs extends Component::app_thread
+	end evs;
+end Component_EVS;

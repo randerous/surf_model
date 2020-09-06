@@ -1,0 +1,7 @@
+package Component_TIME
+public
+	with Component;
+
+	thread time extends Component::app_thread
+	end time;
+end Component_TIME;

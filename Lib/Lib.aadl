@@ -1,0 +1,17 @@
+package Lib
+public
+	with Base_Types;
+
+	feature group LibPort
+		features
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
+	end LibPort;
+
+	feature group ComPort
+		features
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
+	inverse of LibPort
+	end ComPort;
+end Lib;

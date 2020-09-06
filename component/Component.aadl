@@ -1,0 +1,18 @@
+package Component
+public
+	with Lib_SB;
+
+	with Lib_ES;
+
+	with Lib_EVS;
+
+	with Lib_TIME;
+
+	thread app_thread
+		features
+			ES_API: feature group Lib_ES::es_api_require;
+			SB_API: feature group Lib_SB::sb_api_require;
+			EVS_API: feature group Lib_EVS::evs_api_require;
+			TIME_API: feature group Lib_TIME::time_api_require;
+	end app_thread;
+end Component;
