@@ -25,31 +25,31 @@ public
 			EVS_API: feature group Lib_EVS::evs_api_provide;
 			TIME_API: feature group Lib_TIME::time_api_provide;
 		annex agree {**
-			--0: running 1: restart  ¹ØÓÚstaterecord´ú±íÄÄ¸öapp£¬
-			--ÔÚlibÖÐ½øÐÐ´¦ÀíÊ¶±ðÊÇÄÄ¸öÊý¾Ý×Ö¶Î£¬È»ºóÖ±½Ó·µ»Ø´¦Àí½á¹û
+			--0: running 1: restart  ï¿½ï¿½ï¿½ï¿½staterecordï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½appï¿½ï¿½
+			--ï¿½ï¿½libï¿½Ð½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½Ê¶ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶Î£ï¿½È»ï¿½ï¿½Ö±ï¿½Ó·ï¿½ï¿½Ø´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			eq SUCCESS: int = 0;
-			eq ERR_APPID: int = 1;--AppId ²ÎÊý´íÎó£¬»òÊÇºËÐÄ·þÎñ£¬»òÊÇ³¬¹ý32×î´óappÊý
+			eq ERR_APPID: int = 1;--AppId ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó£¬»ï¿½ï¿½Çºï¿½ï¿½Ä·ï¿½ï¿½ñ£¬»ï¿½ï¿½Ç³ï¿½ï¿½ï¿½32ï¿½ï¿½ï¿½appï¿½ï¿½
 			
-			eq INVALID_PIPE: int = 2;--ÎÞÐ§µÄpipeId£¬
-			eq BAD_ARGUMENT: int = 3;--Í¨ÓÃ²ÎÊý´íÎó£¬ÈçMsgId
-			eq MAX_PIPES_MET: int = 4;--¹ÜµÀÊýÓÃ¾¡
-			eq PIPE_CR_ERR: int = 5;--²»ÖªµÀ
+			eq INVALID_PIPE: int = 2;--ï¿½ï¿½Ð§ï¿½ï¿½pipeIdï¿½ï¿½
+			eq BAD_ARGUMENT: int = 3;--Í¨ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½MsgId
+			eq MAX_PIPES_MET: int = 4;--ï¿½Üµï¿½ï¿½ï¿½ï¿½Ã¾ï¿½
+			eq PIPE_CR_ERR: int = 5;--ï¿½ï¿½Öªï¿½ï¿½
 			
-			eq MAX_MSGS_MET: int = 6;--³¬¹ý×î´ó¿ÉÂ·ÓÉÏûÏ¢ÊýÁ¿
-			eq MAX_DESTS_MET: int = 7;--³¬¹ýÒ»¸öÏûÏ¢¿É±»¶©ÔÄµÄ×î´óÊýÁ¿
-			eq BUF_ALOC_ERR: int = 8;--»º³åÇø·ÖÅä´íÎó£¬ÈçÏûÏ¢·ÖÅäÄÚ´æ´íÎó
+			eq MAX_MSGS_MET: int = 6;--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â·ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
+			eq MAX_DESTS_MET: int = 7;--ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½É±ï¿½ï¿½ï¿½ï¿½Äµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+			eq BUF_ALOC_ERR: int = 8;--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½
 			
 			eq MSG_TOO_BIG: int = 9;
 			
-			eq APP_ILLEGAL_APP_ID: int = 10;--²»ÖªµÀ 
-			eq UNKNOWN_FILTER: int = 11;--ÏûÏ¢¹ýÂË´íÎó
-			eq ERR_BUFFER: int = 12;--²»ÖªµÀ£¬¹ÜËûÄØ£¬ÓÃ²»µô
+			eq APP_ILLEGAL_APP_ID: int = 10;--ï¿½ï¿½Öªï¿½ï¿½ 
+			eq UNKNOWN_FILTER: int = 11;--ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Ë´ï¿½ï¿½ï¿½
+			eq ERR_BUFFER: int = 12;--ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½Ã²ï¿½ï¿½ï¿½
 			
-			eq APP_NOT_REGISTERED: int = 13; --appÎ´×¢²á
+			eq APP_NOT_REGISTERED: int = 13; --appÎ´×¢ï¿½ï¿½
 			
-			eq NO_MESSAGE: int = 14; --½ÓÊÕÏûÏ¢Ê±£¬ÏûÏ¢»º³åÇøÃ»ÓÐÏûÏ¢
-			eq TIME_OUT: int = 15;--½ÓÊÕÏûÏ¢³¬Ê±
-			eq PIPE_RD_ERR: int = 16;--¹ÜµÀÎÞ·¨¶ÁÈ¡
+			eq NO_MESSAGE: int = 14; --ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢Ê±ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½Ï¢
+			eq TIME_OUT: int = 15;--ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½Ê±
+			eq PIPE_RD_ERR: int = 16;--ï¿½Üµï¿½ï¿½Þ·ï¿½ï¿½ï¿½È¡
 			
 			assume "": true -> not (ES_API.RestartApp.Valid = true and ES_API.DeleteApp.Valid = true );
 			assume "": true -> not (SB_API.CreatePipe.Valid = true and SB_API.DeletePipe.Valid = true );
@@ -113,7 +113,7 @@ public
 --			guarantee "GetTime": true -> TIME_API.GetTime.Valid = true => 
 --			TIME_API.GetTime.Result = SUCCESS;
 --			
-			--È±ÉÙ×¢²áappºÍ·¢ËÍÊÂ¼þ
+			--È±ï¿½ï¿½×¢ï¿½ï¿½appï¿½Í·ï¿½ï¿½ï¿½ï¿½Â¼ï¿½
 		**};
 	end core;
 

@@ -1,13 +1,5 @@
 package Surf
 public
-	with Component_ES;
-
-	with Component_SB;
-
-	with Component_EVS;
-
-	with Component_TIME;
-
 	with Lib_ES;
 
 	with Lib_SB;
