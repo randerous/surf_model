@@ -4,7 +4,7 @@ public
 
 	with Base_Types;
 
-	with Lib;
+--	with Lib;
 	
 	feature group sb_api_provide
 		features
@@ -53,99 +53,123 @@ public
 --------------------------------------------------------------------------
 ------------------------------CreatePipe----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_CreatePipe extends Lib::LibPort
+	feature group Lib_CreatePipe
 		features
 			AppId: in data port Base_Types::Unsigned_32;
 			PipeId: in data port Base_Types::Unsigned_8;
 			Depth: in data port Base_Types::Unsigned_16;
 			PipeName: in data port Base_Types::String;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_CreatePipe;
 
-	feature group Com_CreatePipe extends Lib::ComPort
+	feature group Com_CreatePipe
 		features
 			AppId: out data port Base_Types::Unsigned_32;
 			PipeId: out data port Base_Types::Unsigned_8;
 			Depth: out data port Base_Types::Unsigned_16;
 			PipeName: out data port Base_Types::String;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_CreatePipe
 	end Com_CreatePipe;
 
 --------------------------------------------------------------------------
 ------------------------------DeletePipe----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_DeletePipe extends Lib::LibPort
+	feature group Lib_DeletePipe
 		features
 			PipeId: in data port Base_Types::Unsigned_8;
 			AppId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_DeletePipe;
 
-	feature group Com_DeletePipe extends Lib::ComPort
+	feature group Com_DeletePipe
 		features
 			PipeId: out data port Base_Types::Unsigned_8;
 			AppId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_DeletePipe
 	end Com_DeletePipe;
 
 --------------------------------------------------------------------------
 ------------------------------Subscribe-----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_Subscribe extends Lib::LibPort
+	feature group Lib_Subscribe
 		features
 			MsgId: in data port Base_Types::Unsigned_16;
 			PipeId: in data port Base_Types::Unsigned_8;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_Subscribe;
 
-	feature group Com_Subscribe extends Lib::ComPort
+	feature group Com_Subscribe
 		features
 			MsgId: out data port Base_Types::Unsigned_16;
 			PipeId: out data port Base_Types::Unsigned_8;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_Subscribe
 	end Com_Subscribe;
 
 --------------------------------------------------------------------------
 ------------------------------Unsubscribe---------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_Unsubscribe extends Lib::LibPort
+	feature group Lib_Unsubscribe
 		features
 			MsgId: in data port Base_Types::Unsigned_16;
 			PipeId: in data port Base_Types::Unsigned_8;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_Unsubscribe;
 
-	feature group Com_Unsubscribe extends Lib::ComPort
+	feature group Com_Unsubscribe
 		features
 			MsgId: out data port Base_Types::Unsigned_16;
 			PipeId: out data port Base_Types::Unsigned_8;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_Unsubscribe
 	end Com_Unsubscribe;
 
 --------------------------------------------------------------------------
 --------------------------------SendMsg-----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_SendMsg extends Lib::LibPort
+	feature group Lib_SendMsg
 		features
 			Msg: in data port Data_SB::struct.CFE_SB_Msg_t;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_SendMsg;
 
-	feature group Com_SendMsg extends Lib::ComPort
+	feature group Com_SendMsg
 		features
 			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_SendMsg
 	end Com_SendMsg;
 --------------------------------------------------------------------------
 --------------------------------RcvMsg-----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_RcvMsg extends Lib::LibPort
+	feature group Lib_RcvMsg
 		features
 			PipeId: in data port Base_Types::Unsigned_8;
 			TimeOut: in data port Base_Types::Integer_32;
 			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_RcvMsg;
 
-	feature group Com_RcvMsg extends Lib::ComPort
+	feature group Com_RcvMsg
 		features
 			PipeId: out data port Base_Types::Unsigned_8;
 			TimeOut: out data port Base_Types::Integer_32;
 			Msg: in data port Data_SB::struct.CFE_SB_Msg_t;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_RcvMsg
 	end Com_RcvMsg;
 end Lib_SB;

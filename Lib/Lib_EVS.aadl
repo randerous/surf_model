@@ -2,7 +2,7 @@ package Lib_EVS
 public
 	with Base_Types;
 
-	with Lib;
+--	with Lib;
 
 	with Data_EVS;
 	
@@ -38,49 +38,61 @@ public
 --------------------------------------------------------------------------
 -------------------------------Register-----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_Register extends Lib::LibPort
+	feature group Lib_Register
 		features
 			Filters: in data port Data_EVS::struct.EVS_BinFilter_t;
 			FilterScheme: in data port Base_Types::Unsigned_16;
 			AppId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_Register;
 
-	feature group Com_Register extends Lib::ComPort
+	feature group Com_Register
 		features
 			Filters: out data port Data_EVS::struct.EVS_BinFilter_t;
 			FilterScheme: out data port Base_Types::Unsigned_16;
 			AppId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_Register
 	end Com_Register;
 --------------------------------------------------------------------------
 -------------------------------Unregister---------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_Unregister extends Lib::LibPort
+	feature group Lib_Unregister
 		features
 			AppId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_Unregister;
 
-	feature group Com_Unregister extends Lib::ComPort
+	feature group Com_Unregister
 		features
 			AppId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_Unregister
 	end Com_Unregister;
 --------------------------------------------------------------------------
 -------------------------------SendEvent----------------------------------
 --------------------------------------------------------------------------
-	feature group Lib_SendEvent extends Lib::LibPort
+	feature group Lib_SendEvent
 		features
 			AppId: in data port Base_Types::Unsigned_32;
 			EvtId: in data port Base_Types::Unsigned_16;
 			EvtType: in data port Base_Types::Unsigned_16;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 --			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 	end Lib_SendEvent;
 
-	feature group Com_SendEvent extends Lib::ComPort
+	feature group Com_SendEvent
 		features
 			AppId: out data port Base_Types::Unsigned_32;
 			EvtId: out data port Base_Types::Unsigned_16;
 			EvtType: out data port Base_Types::Unsigned_16;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 --			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 	inverse of Lib_SendEvent
 	end Com_SendEvent;

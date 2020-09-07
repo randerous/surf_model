@@ -4,7 +4,7 @@ public
 
 	with Data_ES;
 
-	with Lib;
+--	with Lib;
 	
 	feature group es_api_provide
 		features
@@ -46,14 +46,18 @@ public
 --[0-31]	-> 0
 --other		-> (int32)0xc4000017
 --------------------------------------------------------------------------
-	feature group Lib_RegisterApp extends Lib::LibPort
+	feature group Lib_RegisterApp
 		features
 			TaskId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 	end Lib_RegisterApp;
 
-	feature group Com_RegisterApp extends Lib::ComPort
+	feature group Com_RegisterApp
 		features
 			TaskId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 	inverse of Lib_RegisterApp
 	end Com_RegisterApp;
 --------------------------------------------------------------------------
@@ -62,15 +66,19 @@ public
 --[0-31]	&	[^1]	&	[^1]		->	0
 --other			other		other		->	(int32)0xc4000001
 --------------------------------------------------------------------------
-	feature group Lib_RestartApp extends Lib::LibPort
+	feature group Lib_RestartApp
 		features
 			AppId: in data port Base_Types::Unsigned_32;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
 --			StateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
 	end Lib_RestartApp;
 
-	feature group Com_RestartApp extends Lib::ComPort
+	feature group Com_RestartApp
 		features
 			AppId: out data port Base_Types::Unsigned_32;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
 --			StateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
 	inverse of Lib_RestartApp
 	end Com_RestartApp;
@@ -80,22 +88,26 @@ public
 --[0-31]	&	[^1]	&	[^1]		->	0
 --other			other		other		->	(int32)0xc4000001
 --------------------------------------------------------------------------
-	feature group Lib_DeleteApp extends Lib::LibPort
+	feature group Lib_DeleteApp
 		features
 			AppId: in data port Base_Types::Unsigned_32;
-			AppType: in data port Base_Types::Unsigned_32;
-			StateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
-			
-			NewStateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
+			Valid: in data port Base_Types::Boolean;
+			Result: out data port Base_Types::Unsigned_32;
+--			AppType: in data port Base_Types::Unsigned_32;
+--			StateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
+--			
+--			NewStateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
 	end Lib_DeleteApp;
 
-	feature group Com_DeleteApp extends Lib::ComPort
+	feature group Com_DeleteApp
 		features
 			AppId: out data port Base_Types::Unsigned_32;
-			AppType: out data port Base_Types::Unsigned_32;
-			StateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
-			
-			NewStateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
+			Valid: out data port Base_Types::Boolean;
+			Result: in data port Base_Types::Unsigned_32;
+--			AppType: out data port Base_Types::Unsigned_32;
+--			StateRecord: out data port Data_ES::struct.CFE_ES_AppState_t;
+--			
+--			NewStateRecord: in data port Data_ES::struct.CFE_ES_AppState_t;
 	inverse of Lib_DeleteApp
 	end Com_DeleteApp;
 end Lib_ES;
