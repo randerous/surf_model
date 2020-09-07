@@ -64,7 +64,8 @@ public
 			guarantee "": EVS_API.Register.Valid = true => EVS_API.Register.Result = SUCCESS or EVS_API.Register.Result = ERR_APPID
 				or EVS_API.Register.Result = APP_ILLEGAL_APP_ID or EVS_API.Register.Result = UNKNOWN_FILTER or EVS_API.Register.Result = ERR_BUFFER;
 			guarantee "": EVS_API.Unregister.Valid = true => EVS_API.Unregister.Result = SUCCESS or EVS_API.Unregister.Result = ERR_APPID or EVS_API.Unregister.Result = APP_ILLEGAL_APP_ID
-				or EVS_API.Unregister.Result = APP_NOT_REGISTERED;	
+				or EVS_API.Unregister.Result = APP_NOT_REGISTERED;
+			guarantee "": EVS_API.SendEvent.Valid = true => EVS_API.SendEvent.Result = SUCCESS;
 			guarantee "": TIME_API.GetTime.Valid = true => TIME_API.GetTime.Result = SUCCESS;
 		**};
 	end core;
