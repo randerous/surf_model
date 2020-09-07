@@ -36,12 +36,12 @@ public
 	
 	data implementation struct.CFE_SB_PipeD_t
 		subcomponents
-			InUse: data Base_Types::Unsigned_8;
+			InUse: data Base_Types::boolean;
 			PipeId: data Base_Types::Unsigned_8;
 			PipeName: data Base_Types::String;
 			AppName: data Base_Types::String;
 			Spare: data Base_Types::Unsigned_16;
-			Appid: data Base_Types::Unsigned_32;
+			AppId: data Base_Types::Unsigned_32;
 			SysQueueId: data Base_Types::Unsigned_32;
 			LastSender: data Base_Types::Unsigned_32;
 			QueueDepth: data Base_Types::Unsigned_16;
@@ -74,7 +74,7 @@ public
 			Destinations: data Base_Types::Unsigned_16;
 			SeqCnt: data Base_Types::Unsigned_32;
 			RouteList: data struct.CFE_SB_DestinationD_t;
-			AvailableRoute: data Base_Types::Unsigned_8;
+			--AvailableRoute: data Base_Types::Unsigned_8;
 	end struct.CFE_SB_RouteEntry_t;
 	
 	data implementation struct.CFE_SB_DestinationD_t

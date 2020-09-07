@@ -32,15 +32,18 @@ public
 		annex agree{**
 			
 			guarantee "": RestartApp.Result = 1;
-			--0: running 1: restart  关于staterecord代表哪个app，
+			--0: running 1: restart 2: waiting 关于staterecord代表哪个app，
 			--在lib中进行处理识别是哪个数据字段，然后直接返回处理结果
 			eq SUCCESS: int = 0;
 			eq ERR_APPID: int = 1;
 			
 			eq app_running : bool = (app1_app_state.StateRecord.AppState = 0);
 			eq app_restart: bool = (app1_app_state.StateRecord.AppState = 1);
-			guarantee "" :true-> RestartApp.AppId < 4 =>  RestartApp.Result = ERR_APPID;
-			guarantee " ":true ->
+			eq app_wait : bool = (app1_app_state.StateRecord.AppState = 2);
+			guarantee "if restart core, then return error" :true->
+			RestartApp.Valid = true and RestartApp.AppId < 4 =>  
+			RestartApp.Result = ERR_APPID;
+			guarantee "if appid is valid and app is running, then restart it ":true ->
 			    if (RestartApp.Valid = true 
 			    and RestartApp.AppId > 3 
 			    and RestartApp.AppId < 32 
@@ -49,10 +52,21 @@ public
 			    app_restart and RestartApp.Result = SUCCESS
 			    else 
 			    RestartApp.Result = ERR_APPID;
-		   guarantee "initial op is done at first  ":
+		   guarantee "initial op is done at first,  ":
 		        app1_app_state.StateRecord.AppState = 0 ->
-			    RestartApp.Valid = false =>
+			    RestartApp.Valid = false and  
+			    DeleteApp.Valid = false   =>
 			    app1_app_state.StateRecord.AppState = pre( app1_app_state.StateRecord.AppState );
+			    
+		   guarantee "if appid is valid and app is running, then delete it ": true ->
+		   if (DeleteApp.Valid = true
+		   and DeleteApp.AppId > 3 
+		   and DeleteApp.AppId < 32 
+		   and pre(app_running) 
+		   ) then 
+		        app_wait and DeleteApp.Result = SUCCESS
+		   else 
+			    DeleteApp.Result = ERR_APPID;
 		**};
 	end es_lib;
 

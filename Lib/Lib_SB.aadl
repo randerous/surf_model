@@ -5,7 +5,15 @@ public
 	with Base_Types;
 
 --	with Lib;
-	
+
+	abstract a
+		features
+			da : out data port Base_Types::integer;
+		
+		annex agree {**
+			guarantee " a" : da = 1;
+		**};
+	end a;
 	feature group sb_api_provide
 		features
 			CreatePipe: feature group Lib_CreatePipe;
@@ -29,25 +37,112 @@ public
 
 	thread sb_lib
 		features
+			da : out data port Base_Types::integer;
 			CreatePipe: feature group Lib_CreatePipe;
 			DeletePipe: feature group Lib_DeletePipe;
 			Subscribe: feature group Lib_Subscribe;
 			Unsubscribe: feature group Lib_Unsubscribe;
 			SendMsg: feature group Lib_SendMsg;
 			RcvMsg: feature group Lib_RcvMsg;
+			
+			es_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+			sb_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			evs_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			time_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
 --			es_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			sb_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			evs_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			time_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+        annex agree {**
+--        	AppId: in data port Base_Types::Unsigned_32;
+--			PipeId: in data port Base_Types::Unsigned_8;
+--			Depth: in data port Base_Types::Unsigned_16;
+--			PipeName: in data port Base_Types::String;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+           --待改进
+            eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PipeNum: int = 5;
+			
+			eq Create_Pipe:  bool = CreatePipe.Result = SUCCESS and 
+			                        app1_reciver_pipe.PipeId = CreatePipe.AppId and
+			                        app1_reciver_pipe.QueueDepth =  CreatePipe.Depth and
+			                        app1_reciver_pipe.InUse =  true;
+			                        
+        	guarantee "if CreatePipe appid >= PipeNum,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if CreatePipe.Valid = true
+        	then (if (CreatePipe.AppId >= PipeNum or CreatePipe.Depth < 1) then CreatePipe.Result = BAD_ARGUMENT
+        	  else Create_Pipe
+        	)else Create_Pipe ;
+        	
+        	guarantee "maintain info for app1_reciver_pipe":  app1_reciver_pipe.InUse = false ->
+        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_reciver_pipe = pre(app1_reciver_pipe);
+        	 
+        	 
+--          PipeId: in data port Base_Types::Unsigned_8;
+--			AppId: in data port Base_Types::Unsigned_32;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            guarantee "if DeletePipe appid >= PipeNum,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if DeletePipe.Valid = true
+        	then (if (DeletePipe.AppId >= PipeNum ) then DeletePipe.Result = BAD_ARGUMENT
+        	  else DeletePipe.Result = SUCCESS and app1_reciver_pipe.InUse =  false
+        	)else DeletePipe.Result = SUCCESS and app1_reciver_pipe.InUse =  false;
+            
+            
+            eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+			
+--			MsgId: in data port Base_Types::Unsigned_16;
+--			PipeId: in data port Base_Types::Unsigned_8;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            
+            --按照 消息-管道 的对应添加 路由 数据结构
+            eq MAX_MSGID: int = 64;
+            eq MAX_SUB_PER_MSG: int = 16;
+            --留一个消息的数据结构没写，包含消息的当前被订阅数 MAX_DESTS_MET,,BUF_ALOC_ERR
+            guarantee "if Subscribe pipeid >= PipeNum or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
+            if Subscribe.Valid = true 
+            then (if Subscribe.PipeId < 0 or Subscribe.PipeId > PipeNum or 
+            	Subscribe.MsgId < 0 
+            	then Subscribe.Result = BAD_ARGUMENT
+            	else (if Subscribe.MsgId > MAX_MSGID 
+            		then  Subscribe.Result = MAX_MSGS_MET
+            		else Subscribe.Result = SUCCESS
+            	)
+            )else Subscribe.Result = SUCCESS;
+            
+            guarantee "test abstract": da = 1;
+        **};
+         
+         
 	end sb_lib;
 
 	thread implementation sb_lib.impl
 		subcomponents
-			es_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
-			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
-			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
-			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
+        a : abstract a;
+		connections
+	   ad: port a.da -> da;
+--			es_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+--			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+--			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+--			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+--			app1_reciver_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
+
+
 			--按照 消息-管道 的对应添加 路由 数据结构
+			
+			
+--		 annex agree {**
+--            lemma "": app1_reciver_pipe.InUse = true;
+--        **};
 	end sb_lib.impl;
 
 --------------------------------------------------------------------------

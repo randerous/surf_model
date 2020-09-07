@@ -16,6 +16,8 @@ public
 
 	with Lib_TIME;
 	
+
+	
 	thread group core
 		features
 			ES_API: feature group Lib_ES::es_api_provide;
@@ -26,46 +28,92 @@ public
 			--0: running 1: restart  关于staterecord代表哪个app，
 			--在lib中进行处理识别是哪个数据字段，然后直接返回处理结果
 			eq SUCCESS: int = 0;
-			eq ERR_APPID: int = 1;
+			eq ERR_APPID: int = 1;--AppId 参数错误，或是核心服务，或是超过32最大app数
 			
-			eq INVALID_PIPE: int = 2;
-			eq BAD_ARGUMENT: int = 3;
-			eq MAX_PIPES_MET: int = 4;
-			eq PIPE_CR_ERR: int = 5;
+			eq INVALID_PIPE: int = 2;--无效的pipeId，
+			eq BAD_ARGUMENT: int = 3;--通用参数错误，如MsgId
+			eq MAX_PIPES_MET: int = 4;--管道数用尽
+			eq PIPE_CR_ERR: int = 5;--不知道
 			
-			eq MAX_MSGS_MET: int = 6;
-			eq MAX_DESTS_MET: int = 7;
-			eq BUF_ALOC_ERR: int = 8;
+			eq MAX_MSGS_MET: int = 6;--超过最大可路由消息数量
+			eq MAX_DESTS_MET: int = 7;--超过一个消息可被订阅的最大数量
+			eq BUF_ALOC_ERR: int = 8;--缓冲区分配错误，如消息分配内存错误
 			
 			eq MSG_TOO_BIG: int = 9;
 			
-			eq APP_ILLEGAL_APP_ID: int = 10;
-			eq UNKNOWN_FILTER: int = 11;
-			eq ERR_BUFFER: int = 12;
+			eq APP_ILLEGAL_APP_ID: int = 10;--不知道 
+			eq UNKNOWN_FILTER: int = 11;--消息过滤错误
+			eq ERR_BUFFER: int = 12;--不知道，管他呢，用不掉
 			
-			eq APP_NOT_REGISTERED: int = 13;
+			eq APP_NOT_REGISTERED: int = 13; --app未注册
 			
-			eq NO_MESSAGE: int = 14;
-			eq TIME_OUT: int = 15;
-			eq PIPE_RD_ERR: int = 16;
+			eq NO_MESSAGE: int = 14; --接收消息时，消息缓冲区没有消息
+			eq TIME_OUT: int = 15;--接收消息超时
+			eq PIPE_RD_ERR: int = 16;--管道无法读取
 			
-			guarantee "": ES_API.RestartApp.Valid = true => ES_API.RestartApp.Result = SUCCESS or ES_API.RestartApp.Result = ERR_APPID;
-			guarantee "": ES_API.DeleteApp.Valid = true => ES_API.DeleteApp.Result = SUCCESS or ES_API.DeleteApp.Result = ERR_APPID;
-			guarantee "": SB_API.CreatePipe.Valid = true => SB_API.CreatePipe.Result = SUCCESS or SB_API.CreatePipe.Result = INVALID_PIPE
-				or SB_API.CreatePipe.Result = BAD_ARGUMENT or SB_API.CreatePipe.Result = MAX_PIPES_MET or SB_API.CreatePipe.Result = PIPE_CR_ERR;
-			guarantee "": SB_API.DeletePipe.Valid = true => SB_API.DeletePipe.Result = SUCCESS or SB_API.DeletePipe.Result = BAD_ARGUMENT;
-			guarantee "": SB_API.SendMsg.Valid = true => SB_API.Subscribe.Result = SUCCESS or SB_API.Subscribe.Result = MAX_MSGS_MET
-				or SB_API.Subscribe.Result = MAX_DESTS_MET or SB_API.Subscribe.Result = BUF_ALOC_ERR;
-			guarantee "": SB_API.Unsubscribe.Valid = true => SB_API.Unsubscribe.Result = SUCCESS or SB_API.Unsubscribe.Result = BAD_ARGUMENT;
-			guarantee "": SB_API.SendMsg.Valid = true => SB_API.SendMsg.Result = SUCCESS or SB_API.SendMsg.Result = BAD_ARGUMENT
-				or SB_API.SendMsg.Result = MSG_TOO_BIG or SB_API.SendMsg.Result = BUF_ALOC_ERR;
-			guarantee "": SB_API.RcvMsg.Valid = true => SB_API.RcvMsg.Result = SUCCESS or SB_API.RcvMsg.Result = BAD_ARGUMENT
-				or SB_API.RcvMsg.Result = NO_MESSAGE or SB_API.RcvMsg.Result = TIME_OUT or SB_API.RcvMsg.Result = PIPE_RD_ERR;	
-			guarantee "": EVS_API.Register.Valid = true => EVS_API.Register.Result = SUCCESS or EVS_API.Register.Result = ERR_APPID
-				or EVS_API.Register.Result = APP_ILLEGAL_APP_ID or EVS_API.Register.Result = UNKNOWN_FILTER or EVS_API.Register.Result = ERR_BUFFER;
-			guarantee "": EVS_API.Unregister.Valid = true => EVS_API.Unregister.Result = SUCCESS or EVS_API.Unregister.Result = ERR_APPID or EVS_API.Unregister.Result = APP_ILLEGAL_APP_ID
-				or EVS_API.Unregister.Result = APP_NOT_REGISTERED;	
-			guarantee "": TIME_API.GetTime.Valid = true => TIME_API.GetTime.Result = SUCCESS;
+			assume "": true -> not (ES_API.RestartApp.Valid = true and ES_API.DeleteApp.Valid = true );
+			assume "": true -> not (SB_API.CreatePipe.Valid = true and SB_API.DeletePipe.Valid = true );
+			
+			guarantee "Restart App": true -> ES_API.RestartApp.Valid = true => 
+			ES_API.RestartApp.Result = SUCCESS or 
+			ES_API.RestartApp.Result = ERR_APPID;
+			
+			guarantee "Delete App": true -> ES_API.DeleteApp.Valid = true => 
+			ES_API.DeleteApp.Result = SUCCESS or 
+			ES_API.DeleteApp.Result = ERR_APPID;
+			
+			guarantee "Create Pipe": true -> SB_API.CreatePipe.Valid = true => 
+			SB_API.CreatePipe.Result = SUCCESS or 
+			SB_API.CreatePipe.Result = INVALID_PIPE or 
+			SB_API.CreatePipe.Result = BAD_ARGUMENT or 
+			SB_API.CreatePipe.Result = MAX_PIPES_MET or 
+			SB_API.CreatePipe.Result = PIPE_CR_ERR;
+			
+			guarantee "Delete Pipe": true -> SB_API.DeletePipe.Valid = true => 
+			SB_API.DeletePipe.Result = SUCCESS or 
+			SB_API.DeletePipe.Result = BAD_ARGUMENT;
+			
+			guarantee "Subscribe": true -> SB_API.Subscribe.Valid = true => 
+			SB_API.Subscribe.Result = SUCCESS or 
+			SB_API.Subscribe.Result = MAX_MSGS_MET or 
+			SB_API.Subscribe.Result = MAX_DESTS_MET or 
+			SB_API.Subscribe.Result = BUF_ALOC_ERR or
+			SB_API.Subscribe.Result = BAD_ARGUMENT;
+			
+			guarantee "Unsubscribe": true -> SB_API.Unsubscribe.Valid = true => 
+			SB_API.Unsubscribe.Result = SUCCESS or 
+			SB_API.Unsubscribe.Result = BAD_ARGUMENT;
+--			
+--			guarantee "SendMsg": true -> SB_API.SendMsg.Valid = true => 
+--			SB_API.SendMsg.Result = SUCCESS or 
+--			SB_API.SendMsg.Result = BAD_ARGUMENT or 
+--			SB_API.SendMsg.Result = MSG_TOO_BIG or 
+--			SB_API.SendMsg.Result = BUF_ALOC_ERR;
+--			
+--			guarantee "RcvMsg": true -> SB_API.RcvMsg.Valid = true => 
+--			SB_API.RcvMsg.Result = SUCCESS or 
+--			SB_API.RcvMsg.Result = BAD_ARGUMENT or 
+--			SB_API.RcvMsg.Result = NO_MESSAGE or 
+--			SB_API.RcvMsg.Result = TIME_OUT or 
+--			SB_API.RcvMsg.Result = PIPE_RD_ERR;	
+--			
+--			guarantee "Register Event": true -> EVS_API.Register.Valid = true => 
+--			EVS_API.Register.Result = SUCCESS or 
+--			EVS_API.Register.Result = ERR_APPID or 
+--			EVS_API.Register.Result = APP_ILLEGAL_APP_ID or 
+--			EVS_API.Register.Result = UNKNOWN_FILTER or 
+--			EVS_API.Register.Result = ERR_BUFFER;
+--			
+--			guarantee "Unregister Event": true -> EVS_API.Unregister.Valid = true => 
+--			EVS_API.Unregister.Result = SUCCESS or 
+--			EVS_API.Unregister.Result = ERR_APPID or 
+--			EVS_API.Unregister.Result = APP_ILLEGAL_APP_ID or 
+--			EVS_API.Unregister.Result = APP_NOT_REGISTERED;	
+--			
+--			guarantee "GetTime": true -> TIME_API.GetTime.Valid = true => 
+--			TIME_API.GetTime.Result = SUCCESS;
+--			
+			--缺少注册app和发送事件
 		**};
 	end core;
 
@@ -79,6 +127,7 @@ public
 			sb_lib: thread Lib_SB::sb_lib.impl;
 			evs_lib: thread Lib_EVS::evs_lib.impl;
 			time_lib: thread Lib_TIME::time_lib.impl;
+			
 		connections
 			RegisterApp: feature group ES_API.RegisterApp <-> es_lib.RegisterApp;
 			RestartApp: feature group ES_API.RestartApp <-> es_lib.RestartApp;	

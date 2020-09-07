@@ -60,7 +60,7 @@ public
 			Unregister: feature group Lib_EVS::Lib_Unregister;
 			SendEvent: feature group Lib_EVS::Lib_SendEvent;
 			GetTime: feature group Lib_TIME::Lib_GetTime;
-			a: out data port Base_Types::boolean;
+			
 			
 			annex agree{**
 				--assume "one cmd at one time" : RegisterApp.TaskId > 0; --两两不能同时为1

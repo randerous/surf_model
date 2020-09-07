@@ -65,7 +65,7 @@ public
 	data implementation struct.CFE_ES_AppState_t
 		subcomponents
 			AppControlRequest: data Base_Types::Unsigned_32;
-			AppState: data Base_Types::Unsigned_32;--0: running 1: restart
+			AppState: data Base_Types::Unsigned_32;--0: running 1: restart, 2:waiting
 			AppTimer: data Base_Types::Integer_32;
 --			error_core:  data Base_Types::boolean;
 --			error_running:  data Base_Types::boolean;
@@ -77,6 +77,7 @@ public
 			MainTaskName: data Base_Types::String;
 			NumOfChildTasks: data Base_Types::Integer_32;
 	end struct.CFE_ES_MainTaskInfo_t;
+	
 	
 end Data_ES;
 
