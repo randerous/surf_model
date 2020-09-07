@@ -54,7 +54,7 @@ public
 			guarantee "": SB_API.CreatePipe.Valid = true => SB_API.CreatePipe.Result = SUCCESS or SB_API.CreatePipe.Result = INVALID_PIPE
 				or SB_API.CreatePipe.Result = BAD_ARGUMENT or SB_API.CreatePipe.Result = MAX_PIPES_MET or SB_API.CreatePipe.Result = PIPE_CR_ERR;
 			guarantee "": SB_API.DeletePipe.Valid = true => SB_API.DeletePipe.Result = SUCCESS or SB_API.DeletePipe.Result = BAD_ARGUMENT;
-			guarantee "": SB_API.Subscribe.Valid = true => SB_API.Subscribe.Result = SUCCESS or SB_API.Subscribe.Result = MAX_MSGS_MET
+			guarantee "": SB_API.SendMsg.Valid = true => SB_API.Subscribe.Result = SUCCESS or SB_API.Subscribe.Result = MAX_MSGS_MET
 				or SB_API.Subscribe.Result = MAX_DESTS_MET or SB_API.Subscribe.Result = BUF_ALOC_ERR;
 			guarantee "": SB_API.Unsubscribe.Valid = true => SB_API.Unsubscribe.Result = SUCCESS or SB_API.Unsubscribe.Result = BAD_ARGUMENT;
 			guarantee "": SB_API.SendMsg.Valid = true => SB_API.SendMsg.Result = SUCCESS or SB_API.SendMsg.Result = BAD_ARGUMENT
@@ -96,5 +96,40 @@ public
 			SendEvent: feature group EVS_API.SendEvent <-> evs_lib.SendEvent;
 			
 			GetTime: feature group TIME_API.GetTime <-> time_lib.GetTime;
+			
+			es_RegisterApp: feature group es.ES_API.RegisterApp <-> es_lib.RegisterApp;
+			sb_RegisterApp: feature group sb.ES_API.RegisterApp <-> es_lib.RegisterApp;
+			evs_RegisterApp: feature group evs.ES_API.RegisterApp <-> es_lib.RegisterApp;
+			time_RegisterApp: feature group time.ES_API.RegisterApp <-> es_lib.RegisterApp;
+			
+			es_CreatePipe: feature group es.SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			sb_CreatePipe: feature group sb.SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			evs_CreatePipe: feature group evs.SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			time_CreatePipe: feature group time.SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			
+			es_Subscribe: feature group es.SB_API.Subscribe <-> sb_lib.Subscribe;
+			sb_Subscribe: feature group sb.SB_API.Subscribe <-> sb_lib.Subscribe;
+			evs_Subscribe: feature group evs.SB_API.Subscribe <-> sb_lib.Subscribe;
+			time_Subscribe: feature group time.SB_API.Subscribe <-> sb_lib.Subscribe;
+			
+			es_SendMsg: feature group es.SB_API.SendMsg <-> sb_lib.SendMsg;
+			sb_SendMsg: feature group sb.SB_API.SendMsg <-> sb_lib.SendMsg;
+			evs_SendMsg: feature group evs.SB_API.SendMsg <-> sb_lib.SendMsg;
+			time_SendMsg: feature group time.SB_API.SendMsg <-> sb_lib.SendMsg;
+			
+			es_RcvMsg: feature group es.SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			sb_RcvMsg: feature group sb.SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			evs_RcvMsg: feature group evs.SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			time_RcvMsg: feature group time.SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			
+			es_Register: feature group es.EVS_API.Register <-> evs_lib.Register;
+			sb_Register: feature group sb.EVS_API.Register <-> evs_lib.Register;
+			evs_Register: feature group evs.EVS_API.Register <-> evs_lib.Register;
+			time_Register: feature group time.EVS_API.Register <-> evs_lib.Register;
+			
+			es_SendEvent: feature group es.EVS_API.SendEvent <-> evs_lib.SendEvent;
+			sb_SendEvent: feature group sb.EVS_API.SendEvent <-> evs_lib.SendEvent;
+			evs_SendEvent: feature group evs.EVS_API.SendEvent <-> evs_lib.SendEvent;
+			time_SendEvent: feature group time.EVS_API.SendEvent <-> evs_lib.SendEvent;
 	end core.impl;
 end Component_Group_Core;
