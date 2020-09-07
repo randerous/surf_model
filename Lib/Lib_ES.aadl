@@ -26,6 +26,8 @@ public
 			RegisterApp: feature group Lib_RegisterApp;
 			RestartApp: feature group Lib_RestartApp;
 			DeleteApp: feature group Lib_DeleteApp;
+			app1_task_state: out data port Data_ES::struct.CFE_ES_TaskRecord_t;
+			app1_app_state: out data port Data_ES::struct.CFE_ES_AppRecord_t;
 		
 		annex agree{**
 			

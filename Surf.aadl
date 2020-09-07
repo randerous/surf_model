@@ -1,9 +1,31 @@
 package Surf
 public
+	with Component_ES;
+
+	with Component_SB;
+
+	with Component_EVS;
+
+	with Component_TIME;
+
+	with Lib_ES;
+
+	with Lib_SB;
+
+	with Component_App;
+
+	with Lib_EVS;
+
+	with Lib_TIME;
+	
+	with Base_Types;
+	
 	with Component_App;
 
 	with Component_Group_Core;
+    
 
+    
 	process surf
 	end surf;
 
@@ -23,4 +45,110 @@ public
 			app2_evs_api: feature group app2.EVS_API <-> core.EVS_API;
 			app2_time_api: feature group app2.TIME_API <-> core.TIME_API;
 	end surf.impl;
+
+	thread group core
+		features
+			RegisterApp: feature group Lib_ES::Lib_RegisterApp; --暂时不知道
+			RestartApp: feature group Lib_ES::Lib_RestartApp;
+			DeleteApp: feature group Lib_ES::Lib_DeleteApp;
+			CreatePipe: feature group Lib_SB::Com_CreatePipe;
+			DeletePipe: feature group Lib_SB::Com_DeletePipe;
+			Subscribe: feature group Lib_SB::Com_Subscribe;
+			Unsubscribe: feature group Lib_SB::Com_Unsubscribe;
+			SendMsg: feature group Lib_SB::Com_SendMsg;
+			Register: feature group Lib_EVS::Lib_Register;
+			Unregister: feature group Lib_EVS::Lib_Unregister;
+			SendEvent: feature group Lib_EVS::Lib_SendEvent;
+			GetTime: feature group Lib_TIME::Lib_GetTime;
+			a: out data port Base_Types::boolean;
+			
+			annex agree{**
+				--assume "one cmd at one time" : RegisterApp.TaskId > 0; --两两不能同时为1
+				--guarantee " if restart app then success" :  RestartApp.Valid = true  lib.state = 0  and lib.apptype != core => RestartApp.Result = 0;
+			
+			--0: running 1: restart  关于staterecord代表哪个app，
+			--在lib中进行处理识别是哪个数据字段，然后直接返回处理结果
+			eq SUCCESS: int = 0;
+			eq ERR_APPID: int = 1;
+			
+			eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+			
+			eq MSG_TOO_BIG: int = 9;
+			
+			eq APP_ILLEGAL_APP_ID: int = 10;
+			eq UNKNOWN_FILTER: int = 11;
+			eq ERR_BUFFER: int = 12;
+			
+			eq APP_NOT_REGISTERED: int = 13;
+			eq NO_MESSAGE: int = 14;
+			eq TIME_OUT: int = 15;
+			eq PIPE_RD_ERR: int = 16;
+ 
+ 
+ 
+           --guarantee "a" : a = true;
+           --guarantee "": RestartApp.Result = ERR_APPID;
+           guarantee "restart app": true -> RestartApp.Valid = true => 
+			    RestartApp.Result = SUCCESS or RestartApp.Result = ERR_APPID;
+            --guarantee "": RcvMsg.Valid = true => RcvMsg.Result = SUCCESS or RcvMsg.Result = BAD_ARGUMENT
+				--or RcvMsg.Result = NO_MESSAGE or RcvMsg.Result = TIME_OUT or RcvMsg.Result = PIPE_RD_ERR;
+			
+			
+			--guarantee "": DeleteApp.Valid = true => DeleteApp.Result = SUCCESS or DeleteApp.Result = ERR_APPID;
+			--guarantee "": CreatePipe.Valid = true => CreatePipe.Result = SUCCESS or CreatePipe.Result = INVALID_PIPE
+			--	or CreatePipe.Result = BAD_ARGUMENT or CreatePipe.Result = MAX_PIPES_MET or CreatePipe.Result = PIPE_CR_ERR;
+			--guarantee "": DeletePipe.Valid = true => DeletePipe.Result = SUCCESS or DeletePipe.Result = BAD_ARGUMENT;
+			--guarantee "": Subscribe.Valid = true => Subscribe.Result = SUCCESS or Subscribe.Result = MAX_MSGS_MET or 
+			--	Subscribe.Result = MAX_DESTS_MET or Subscribe.Result = BUF_ALOC_ERR;
+			--guarantee "": Unsubscribe.Valid = true => Unsubscribe.Result = SUCCESS or Unsubscribe.Result = BAD_ARGUMENT;
+			
+			--guarantee "": SendMsg.Valid = true => SendMsg.Result = SUCCESS or SendMsg.Result = BAD_ARGUMENT 
+				--or SendMsg.Result = MSG_TOO_BIG or SendMsg.Result = BUF_ALOC_ERR;
+				
+			--guarantee "": Register.Valid = true => Register.Result = SUCCESS or Register.Result = ERR_APPID 
+				--or Register.Result = APP_ILLEGAL_APP_ID or Register.Result = UNKNOWN_FILTER or Register.Result = ERR_BUFFER;
+			
+			--guarantee "": Unregister.Valid = true => Unregister.Result = SUCCESS or Unregister.Result = ERR_APPID or Unregister.Result = APP_ILLEGAL_APP_ID;
+			
+			--guarantee "": Unregister.Valid = true => Unregister.Result = SUCCESS or Unregister.Result = ERR_APPID or Unregister.Result = APP_ILLEGAL_APP_ID
+				--or Unregister.Result = APP_NOT_REGISTERED;
+				
+			--guarantee "": GetTime.Valid = true => GetTime.Result = SUCCESS;
+				
+			**};
+	end core;
+
+	thread group implementation core.impl
+		subcomponents
+				--es: thread Component_ES::es;
+				--sb: thread Component_SB::sb;
+				--evs: thread Component_EVS::evs;
+				--time: thread Component_TIME::time;
+		es_lib: thread Lib_ES::es_lib.impl ;
+			    --sb_lib: thread Lib_SB::sb_lib.impl;
+				--evs_lib: thread Lib_EVS::evs_lib.impl;
+				--time_lib: thread Lib_TIME::time_lib.impl;   
+		connections
+			fsd: port  es_lib.a -> a;
+			 restart_app_connection: feature group RestartApp <-> es_lib.RestartApp;
+			 
+--			 abc: port es_lib.RestartApp.Result -> RestartApp.Result;
+				
+		annex agree {**
+			
+			--lemma "":es_lib.DeleteApp.AppId > 0;
+			--and RestartApp.Valid = true and RestartApp.AppId < 32 and 
+		                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+			
+			--lemma "":es_lib.DeleteApp.AppId > 0;
+			--and RestartApp.Valid = true and RestartApp.AppId < 32 and 
+**};
+	end core.impl;
 end Surf;
