@@ -136,7 +136,6 @@ public
 				--evs_lib: thread Lib_EVS::evs_lib.impl;
 				--time_lib: thread Lib_TIME::time_lib.impl;   
 		connections
-			fsd: port  es_lib.a -> a;
 			 restart_app_connection: feature group RestartApp <-> es_lib.RestartApp;
 			 
 --			 abc: port es_lib.RestartApp.Result -> RestartApp.Result;
