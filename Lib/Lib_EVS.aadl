@@ -26,6 +26,36 @@ public
 			Register: feature group Lib_Register;
 			Unregister: feature group Lib_Unregister;
 			SendEvent: feature group Lib_SendEvent;
+		
+		annex agree{**
+--			Filters: in data port Data_EVS::struct.EVS_BinFilter_t;
+--			FilterScheme: in data port Base_Types::Unsigned_16;
+--			AppId: in data port Base_Types::Unsigned_32;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            eq SUCCESS: int = 0; 
+            eq ERR_APPID: int = 1;--AppId£¬
+            
+            guarantee "check args of Register": true ->
+            if Register.Valid = true
+            then( if Register.AppId >= 0 and Register.AppId < 32
+            	then Register.Result = SUCCESS
+            	else Register.Result = ERR_APPID
+            )
+            else true;
+            
+--          AppId: in data port Base_Types::Unsigned_32;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            guarantee "check args of Unregister": true ->
+            if Unregister.Valid = true
+            then( if Unregister.AppId >= 0 and Unregister.AppId < 32
+            	then Unregister.Result = SUCCESS
+            	else Unregister.Result = ERR_APPID
+            )
+            else true;
+           
+		**};
 	end evs_lib;
 	
 	thread implementation evs_lib.impl
