@@ -6,14 +6,14 @@ public
 
 --	with Lib;
 
-	abstract a
-		features
-			da : out data port Base_Types::integer;
-		
-		annex agree {**
-			guarantee " a" : da = 1;
-		**};
-	end a;
+--	abstract a
+--		features
+--			da : out data port Base_Types::integer;
+--		
+--		annex agree {**
+--			guarantee " a" : da = 1;
+--		**};
+--	end a;
 	feature group sb_api_provide
 		features
 			CreatePipe: feature group Lib_CreatePipe;
@@ -34,10 +34,9 @@ public
 			RcvMsg: feature group Lib_SB::Com_RcvMsg;
 	inverse of sb_api_provide
 	end sb_api_require;
-
-	thread sb_lib
+	
+	abstract lib_func
 		features
-			da : out data port Base_Types::integer;
 			CreatePipe: feature group Lib_CreatePipe;
 			DeletePipe: feature group Lib_DeletePipe;
 			Subscribe: feature group Lib_Subscribe;
@@ -45,10 +44,26 @@ public
 			SendMsg: feature group Lib_SendMsg;
 			RcvMsg: feature group Lib_RcvMsg;
 			
-			es_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
-			sb_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
-			evs_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
-			time_pipe:out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+	end lib_func;
+
+	thread sb_lib
+		features
+			CreatePipe: feature group Lib_CreatePipe;
+			DeletePipe: feature group Lib_DeletePipe;
+			Subscribe: feature group Lib_Subscribe;
+			Unsubscribe: feature group Lib_Unsubscribe;
+			SendMsg: feature group Lib_SendMsg;
+			RcvMsg: feature group Lib_RcvMsg;
+			
+			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
 			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
 --			es_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			sb_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
@@ -119,8 +134,6 @@ public
             	)
             )else true;
             
-            guarantee "test abstract": da = 1;
-            
 --          MsgId: in data port Base_Types::Unsigned_16;
 --			PipeId: in data port Base_Types::Unsigned_8;
 --			Valid: in data port Base_Types::Boolean;
@@ -185,22 +198,28 @@ public
 
 	thread implementation sb_lib.impl
 		subcomponents
-        a : abstract a;
-		connections
-	   ad: port a.da -> da;
+			func: abstract lib_func;
 --			es_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
 --			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 --			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 --			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
 --			app1_reciver_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
-
-
-			--按照 消息-管道 的对应添加 路由 数据结构
-			
-			
+				--按照 消息-管道 的对应添加 路由 数据结构
 --		 annex agree {**
 --            lemma "": app1_reciver_pipe.InUse = true;
 --        **};
+		connections
+			func_RcvMsg: feature group RcvMsg <-> func.RcvMsg;
+			func_CreatePipe: feature group CreatePipe <-> func.CreatePipe;
+			func_DeletePipe: feature group DeletePipe <-> func.DeletePipe;
+			func_Subscribe: feature group Subscribe <-> func.Subscribe;
+			func_Unsubscribe: feature group Unsubscribe <-> func.Unsubscribe;
+			func_SendMsg: feature group SendMsg <-> func.SendMsg;
+			es_pipe_c: port func.es_pipe -> es_pipe;
+			sb_pipe_c: port func.sb_pipe -> sb_pipe;
+			app1_pipe_c: port func.app1_reciver_pipe -> app1_reciver_pipe;
+			time_pipe_c: port func.time_pipe -> time_pipe;
+			evs_pipe_c: port func.evs_pipe -> evs_pipe;
 	end sb_lib.impl;
 
 --------------------------------------------------------------------------
