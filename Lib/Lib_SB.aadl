@@ -49,6 +49,17 @@ public
 			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
 			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+			
+			msg1_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg1_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg1_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg1_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg1_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg2_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg2_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg2_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg2_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			msg2_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
 	end lib_func;
 
 	thread sb_lib
