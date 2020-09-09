@@ -4,16 +4,7 @@ public
 
 	with Base_Types;
 
---	with Lib;
 
---	abstract a
---		features
---			da : out data port Base_Types::integer;
---		
---		annex agree {**
---			guarantee " a" : da = 1;
---		**};
---	end a;
 	feature group sb_api_provide
 		features
 			CreatePipe: feature group Lib_CreatePipe;
@@ -60,7 +51,16 @@ public
 			msg2_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
 			msg2_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
 			msg2_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			
+			
+			annex agree{**
+				
+			**};
 	end lib_func;
+	
+	abstract implementation lib_func.im
+		
+	end lib_func.im;
 
 	thread sb_lib
 		features
