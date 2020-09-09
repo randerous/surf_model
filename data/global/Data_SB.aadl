@@ -49,6 +49,7 @@ public
 			CurrentBuff: data struct.CFE_SB_BufferD_t;
 			ToTrashBuff: data struct.CFE_SB_BufferD_t;
 			MsgQueue: data Base_Types::String;
+			MsgId: data Base_Types::Integer;
 			ReadIdx: data Base_Types::Unsigned_8;
 			WriteIdx: data Base_Types::Unsigned_8;
 	end struct.CFE_SB_PipeD_t;
