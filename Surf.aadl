@@ -10,7 +10,7 @@ public
 
 	with Lib_TIME;
 	
-	with Base_Types;
+--	with Base_Types;
 	
 	with Component_App;
 
