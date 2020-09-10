@@ -4,16 +4,7 @@ public
 
 	with Base_Types;
 
---	with Lib;
 
---	abstract a
---		features
---			da : out data port Base_Types::integer;
---		
---		annex agree {**
---			guarantee " a" : da = 1;
---		**};
---	end a;
 	feature group sb_api_provide
 		features
 			CreatePipe: feature group Lib_CreatePipe;
@@ -48,19 +39,194 @@ public
 			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
-			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
 			
-			msg1_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg1_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg1_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg1_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg1_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg2_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg2_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg2_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg2_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
-			msg2_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			
+			
+			annex agree{**
+--			MsgId: in data port Base_Types::Unsigned_16;
+--			PipeId: in data port Base_Types::Unsigned_8;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;	
+			    -- router info
+			    eq msg1_es_pipe : bool,  msg1_sb_pipe : bool,
+			       msg1_evs_pipe : bool, msg1_time_pipe : bool, 
+			       msg1_app1_pipe : bool;
+				eq msg2_es_pipe : bool,  msg2_sb_pipe : bool,
+			       msg2_evs_pipe : bool, msg2_time_pipe : bool, 
+			       msg2_app1_pipe : bool;
+			    
+			   --set router  
+			   --subscribe info
+			    guarantee "es subscribe msg1": msg1_es_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 0
+			      then true
+			      else pre(msg1_es_pipe);
+			    guarantee "sb subscribe msg1": msg1_sb_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1
+			      then true
+			      else pre(msg1_sb_pipe);
+			    guarantee "evs subscribe msg1": msg1_evs_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 2
+			      then true
+			      else pre(msg1_evs_pipe);
+			    guarantee "time subscribe msg1": msg1_time_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 3
+			      then true
+			      else pre(msg1_time_pipe);
+			    guarantee "app1 subscribe msg1": msg1_app1_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 4
+			      then true
+			      else pre(msg1_app1_pipe);
+			      
+			    guarantee "es subscribe msg2": msg2_es_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 0
+			      then true
+			      else pre(msg2_es_pipe);
+			    guarantee "sb subscribe msg2": msg2_sb_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 1
+			      then true
+			      else pre(msg2_sb_pipe);
+			    guarantee "evs subscribe msg2": msg2_evs_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 2
+			      then true
+			      else pre(msg2_evs_pipe);
+			    guarantee "time subscribe msg2": msg2_time_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 3
+			      then true
+			      else pre(msg2_time_pipe);
+			    guarantee "app1 subscribe msg2": msg2_app1_pipe = false ->
+			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 4
+			      then true
+			      else pre(msg2_app1_pipe);
+			      
+			    --unsubscribe info
+			    guarantee "es Unsubscribe msg1": msg1_es_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 0
+			      then false
+			      else pre(msg1_es_pipe);
+			    guarantee "sb Unsubscribe msg1": msg1_sb_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1
+			      then false
+			      else pre(msg1_sb_pipe);
+			    guarantee "evs Unsubscribe msg1": msg1_evs_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 2
+			      then false
+			      else pre(msg1_evs_pipe);
+			    guarantee "time Unsubscribe msg1": msg1_time_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 3
+			      then false
+			      else pre(msg1_time_pipe);
+			    guarantee "app1 Unsubscribe msg1": msg1_app1_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 4
+			      then false
+			      else pre(msg1_app1_pipe);
+			      
+			    guarantee "es Unsubscribe msg2": msg2_es_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 0
+			      then false
+			      else pre(msg2_es_pipe);
+			    guarantee "sb Unsubscribe msg2": msg2_sb_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 1
+			      then false
+			      else pre(msg2_sb_pipe);
+			    guarantee "evs Unsubscribe msg2": msg2_evs_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 2
+			      then false
+			      else pre(msg2_evs_pipe);
+			    guarantee "time Unsubscribe msg2": msg2_time_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 3
+			      then false
+			      else pre(msg2_time_pipe);
+			    guarantee "app1 Unsubscribe msg2": msg2_app1_pipe = false ->
+			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 4
+			      then false
+			      else pre(msg2_app1_pipe);
+			    
+--			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+--			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+--			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+--			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+--			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+--			
+--			msg1_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg1_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_es_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_sb_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_evs_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_time_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+--			msg2_app1_pipe: out data port Data_SB::struct.CFE_SB_RouteEntry_t;
+			    --send msg1
+			    guarantee "send msg1 for subscriber es" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 1 and msg1_es_pipe
+			    then es_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg1 for subscriber sb" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 1 and msg1_sb_pipe
+			    then sb_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg1 for subscriber evs" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 1 and msg1_evs_pipe
+			    then evs_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg1 for subscriber time" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 1 and msg1_time_pipe
+			    then time_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg1 for subscriber app1" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 1 and msg1_app1_pipe
+			    then app1_pipe.MsgId = 1
+			    else true;
+			    
+			    --send msg2
+			    guarantee "send msg2 for subscriber es" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_es_pipe
+			    then es_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg2 for subscriber sb" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_sb_pipe
+			    then sb_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg2 for subscriber evs" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_evs_pipe
+			    then evs_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg2 for subscriber time" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_time_pipe
+			    then time_pipe.MsgId = 1
+			    else true;
+			    
+			    guarantee "send msg2 for subscriber app1" : true -> 
+			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_app1_pipe
+			    then app1_pipe.MsgId = 1
+			    else true;
+			      
+			**};
 	end lib_func;
+	
+	abstract implementation lib_func.im
+		
+	end lib_func.im;
 
 	thread sb_lib
 		features
@@ -75,7 +241,7 @@ public
 			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
-			app1_reciver_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
 --			es_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			sb_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			evs_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
@@ -96,9 +262,9 @@ public
 			eq PIPENUM: int = 5;
 			
 			eq Create_Pipe:  bool = CreatePipe.Result = SUCCESS and 
-			                        app1_reciver_pipe.PipeId = CreatePipe.AppId and
-			                        app1_reciver_pipe.QueueDepth =  CreatePipe.Depth and
-			                        app1_reciver_pipe.InUse =  true;
+			                        app1_pipe.PipeId = CreatePipe.AppId and
+			                        app1_pipe.QueueDepth =  CreatePipe.Depth and
+			                        app1_pipe.InUse =  true;
 			                        
         	guarantee "if CreatePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
         	if CreatePipe.Valid = true
@@ -106,8 +272,8 @@ public
         	  else Create_Pipe
         	)else Create_Pipe ;
         	
-        	guarantee "maintain info for app1_reciver_pipe":  app1_reciver_pipe.InUse = false ->
-        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_reciver_pipe = pre(app1_reciver_pipe);
+        	guarantee "maintain info for app1_pipe":  app1_pipe.InUse = false ->
+        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_pipe.InUse = pre(app1_pipe.InUse);
         	 
         	 
 --          PipeId: in data port Base_Types::Unsigned_8;
@@ -117,7 +283,7 @@ public
             guarantee "if DeletePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
         	if DeletePipe.Valid = true
         	then (if (DeletePipe.AppId >= PIPENUM ) then DeletePipe.Result = BAD_ARGUMENT
-        	  else DeletePipe.Result = SUCCESS and app1_reciver_pipe.InUse =  false
+        	  else DeletePipe.Result = SUCCESS and app1_pipe.InUse =  false
         	)else true;
             
             
@@ -202,6 +368,14 @@ public
                 else RcvMsg.Result = BAD_ARGUMENT
             	)
             else true;
+            
+            eq es_sub_msg1 : bool = false -> pre(es_sub_msg1)  or 
+            ((Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1)
+            and not(Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1));
+            guarantee "if es sub msg1, then es receive msg1": true ->
+               if es_sub_msg1 and SendMsg.Valid = true and SendMsg.Msg.MsgId = 1
+               then  es_pipe.MsgId = 1
+               else true;
         **};
          
          
@@ -214,10 +388,10 @@ public
 --			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 --			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 --			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
---			app1_reciver_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
+--			app1_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
 				--按照 消息-管道 的对应添加 路由 数据结构
 --		 annex agree {**
---            lemma "": app1_reciver_pipe.InUse = true;
+--            lemma "": app1_pipe.InUse = true;
 --        **};
 		connections
 			func_RcvMsg: feature group RcvMsg <-> func.RcvMsg;
@@ -228,7 +402,7 @@ public
 			func_SendMsg: feature group SendMsg <-> func.SendMsg;
 			es_pipe_c: port func.es_pipe -> es_pipe;
 			sb_pipe_c: port func.sb_pipe -> sb_pipe;
-			app1_pipe_c: port func.app1_reciver_pipe -> app1_reciver_pipe;
+			app1_pipe_c: port func.app1_pipe -> app1_pipe;
 			time_pipe_c: port func.time_pipe -> time_pipe;
 			evs_pipe_c: port func.evs_pipe -> evs_pipe;
 	end sb_lib.impl;
