@@ -54,12 +54,127 @@ public
 			
 			
 			annex agree{**
+					
+			  eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			
+			eq Create_Pipe:  bool = (CreatePipe.Result = SUCCESS and 
+			                        app1_pipe.PipeId = CreatePipe.AppId and
+			                        app1_pipe.QueueDepth =  CreatePipe.Depth and
+			                        app1_pipe.InUse =  true);
+			                        
+        	guarantee "if CreatePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if CreatePipe.Valid = true
+        	then (if (CreatePipe.AppId >= PIPENUM or CreatePipe.Depth < 1) then CreatePipe.Result = BAD_ARGUMENT
+        	  else Create_Pipe
+        	)else true ;
+        	
+--        	guarantee "maintain info for app1_pipe":  app1_pipe.InUse = false ->
+--        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_pipe.InUse = pre(app1_pipe.InUse);
+        	 
+        	 
+--          PipeId: in data port Base_Types::Unsigned_8;
+--			AppId: in data port Base_Types::Unsigned_32;
+--			Valid: in data port Base_Types::Boolean;
+----			Result: out data port Base_Types::Unsigned_32;
+            guarantee "if DeletePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if DeletePipe.Valid = true
+        	then (if (DeletePipe.AppId >= PIPENUM ) then DeletePipe.Result = BAD_ARGUMENT
+        	  else DeletePipe.Result = SUCCESS and app1_pipe.InUse =  false
+        	)else true;
+            
+            
+            eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+			
+--			MsgId: in data port Base_Types::Unsigned_16;
+--			PipeId: in data port Base_Types::Unsigned_8;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            
+            --按照 消息-管道 的对应添加 路由 数据结构
+            eq MAX_MSGID: int = 64;
+            eq MAX_SUB_PER_MSG: int = 16;
+--            --留一个消息的数据结构没写，包含消息的当前被订阅数 MAX_DESTS_MET,,BUF_ALOC_ERR
+            guarantee "if Subscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
+            if Subscribe.Valid = true 
+            then (if Subscribe.PipeId < 0 or Subscribe.PipeId > PIPENUM or 
+            	Subscribe.MsgId < 0 
+            	then Subscribe.Result = BAD_ARGUMENT
+            	else (if Subscribe.MsgId > MAX_MSGID 
+            		then  Subscribe.Result = MAX_MSGS_MET
+            		else Subscribe.Result = SUCCESS
+            	)
+            )else true;
+            
+--          MsgId: in data port Base_Types::Unsigned_16;
+--			PipeId: in data port Base_Types::Unsigned_8;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+           --
+           guarantee "if Unsubscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
+            if Unsubscribe.Valid = true 
+            then (if Unsubscribe.PipeId < 0 or Unsubscribe.PipeId > PIPENUM or 
+            	Unsubscribe.MsgId < 0 or Unsubscribe.MsgId  > MAX_MSGID 
+            	then 
+            	   Unsubscribe.Result = BAD_ARGUMENT
+            	else 
+            	   Unsubscribe.Result = SUCCESS
+            )else true;
+            
+            
+--          Msg: in data port Data_SB::struct.CFE_SB_Msg_t;
+--             MsgId: data Base_Types::Unsigned_16;
+--			   EvtId: data Base_Types::Unsigned_16;
+--			   Content: data Base_Types::String;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+            
+            eq EVT_MSGID: int = 3;
+            eq MAX_EVTID: int = 36;
+            
+            eq MSGID_VALID: bool = SendMsg.Msg.MsgId >= 0 and SendMsg.Msg.MsgId < MAX_MSGID;
+            eq EVTID_VALID: bool = SendMsg.Msg.EvtId >= 0 and SendMsg.Msg.EvtId < MAX_EVTID;
+            guarantee "if SendMsg arg is error then report else success " : true ->
+            if SendMsg.Valid = true 
+            then (if MSGID_VALID 
+            	then (if ((EVTID_VALID and SendMsg.Msg.MsgId =  EVT_MSGID) or 
+            		not (EVTID_VALID and SendMsg.Msg.MsgId <>  EVT_MSGID))
+            		then SendMsg.Result = SUCCESS
+            		else SendMsg.Result = BAD_ARGUMENT
+            	)else SendMsg.Result = BAD_ARGUMENT
+            )else true;
+            
+--          PipeId: in data port Base_Types::Unsigned_8;
+--			TimeOut: in data port Base_Types::Integer_32;
+--			Msg: out data port Data_SB::struct.CFE_SB_Msg_t;
+--			Valid: in data port Base_Types::Boolean;
+--			Result: out data port Base_Types::Unsigned_32;
+--          SB_API.RcvMsg.Result = SUCCESS or 
+--			SB_API.RcvMsg.Result = BAD_ARGUMENT or 
+--			SB_API.RcvMsg.Result = NO_MESSAGE or 
+--			SB_API.RcvMsg.Result = TIME_OUT or 
+--			SB_API.RcvMsg.Result = PIPE_RD_ERR;	
+
+            eq RCV_PIPEID_VALID: bool = RcvMsg.PipeId >= 0 and  RcvMsg.PipeId < PIPENUM;
+            guarantee "if RcvMsg arg is error then report else success " : true ->
+            if RcvMsg.Valid = true 
+            then (if RCV_PIPEID_VALID 
+            	then RcvMsg.Result = SUCCESS
+                else RcvMsg.Result = BAD_ARGUMENT
+            	)
+            else true;
 --			MsgId: in data port Base_Types::Unsigned_16;
 --			PipeId: in data port Base_Types::Unsigned_8;
 --			Valid: in data port Base_Types::Boolean;
 --			Result: out data port Base_Types::Unsigned_32;	
 			    -- router info
-			    eq msg1_es_pipe : bool,  msg1_sb_pipe : bool,
+			    eq msg1_es_pipe : bool  ;eq   msg1_sb_pipe : bool,
 			       msg1_evs_pipe : bool, msg1_time_pipe : bool, 
 			       msg1_app1_pipe : bool;
 				eq msg2_es_pipe : bool,  msg2_sb_pipe : bool,
@@ -220,7 +335,7 @@ public
 			    if SendMsg.Valid = true and SendMsg.Msg.MsgId = 2 and msg2_app1_pipe
 			    then app1_pipe.MsgId = 1
 			    else true;
-			      
+			     
 			**};
 	end lib_func;
 	
@@ -253,6 +368,8 @@ public
 --			PipeName: in data port Base_Types::String;
 --			Valid: in data port Base_Types::Boolean;
 --			Result: out data port Base_Types::Unsigned_32;
+            assume "NO CreatePipe and DeletePipe at same time" : not(CreatePipe.Valid = true and DeletePipe.Valid = true);
+            assume "NO Subscribe and Unsubscribe at same time" : not(Subscribe.Valid = true and Unsubscribe.Valid = true);
            --待改进
             eq SUCCESS: int = 0; 
             eq INVALID_PIPE: int = 2;
@@ -270,16 +387,16 @@ public
         	if CreatePipe.Valid = true
         	then (if (CreatePipe.AppId >= PIPENUM or CreatePipe.Depth < 1) then CreatePipe.Result = BAD_ARGUMENT
         	  else Create_Pipe
-        	)else Create_Pipe ;
+        	)else true ;
         	
-        	guarantee "maintain info for app1_pipe":  app1_pipe.InUse = false ->
-        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_pipe.InUse = pre(app1_pipe.InUse);
+--        	guarantee "maintain info for app1_pipe":  app1_pipe.InUse = false ->
+--        	 CreatePipe.Valid = false and DeletePipe.Valid = false => app1_pipe.InUse = pre(app1_pipe.InUse);
         	 
         	 
 --          PipeId: in data port Base_Types::Unsigned_8;
 --			AppId: in data port Base_Types::Unsigned_32;
 --			Valid: in data port Base_Types::Boolean;
---			Result: out data port Base_Types::Unsigned_32;
+----			Result: out data port Base_Types::Unsigned_32;
             guarantee "if DeletePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
         	if DeletePipe.Valid = true
         	then (if (DeletePipe.AppId >= PIPENUM ) then DeletePipe.Result = BAD_ARGUMENT
@@ -299,7 +416,7 @@ public
             --按照 消息-管道 的对应添加 路由 数据结构
             eq MAX_MSGID: int = 64;
             eq MAX_SUB_PER_MSG: int = 16;
-            --留一个消息的数据结构没写，包含消息的当前被订阅数 MAX_DESTS_MET,,BUF_ALOC_ERR
+--            --留一个消息的数据结构没写，包含消息的当前被订阅数 MAX_DESTS_MET,,BUF_ALOC_ERR
             guarantee "if Subscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
             if Subscribe.Valid = true 
             then (if Subscribe.PipeId < 0 or Subscribe.PipeId > PIPENUM or 
@@ -369,9 +486,12 @@ public
             	)
             else true;
             
-            eq es_sub_msg1 : bool = false -> pre(es_sub_msg1)  or 
-            ((Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1)
-            and not(Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1));
+            eq es_sub_msg1 : bool = false -> 
+            if( (pre(es_sub_msg1) = true and not(Subscribe.Valid = true or Unsubscribe.Valid = true))
+            or ((Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1)) )
+            then true
+            else false;
+            
             guarantee "if es sub msg1, then es receive msg1": true ->
                if es_sub_msg1 and SendMsg.Valid = true and SendMsg.Msg.MsgId = 1
                then  es_pipe.MsgId = 1
