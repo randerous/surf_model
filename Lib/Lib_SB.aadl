@@ -17,14 +17,56 @@ public
 	
 	feature group sb_api_require
 		features
-			CreatePipe: feature group Lib_SB::Com_CreatePipe;
-			DeletePipe: feature group Lib_SB::Com_DeletePipe;
-			Subscribe: feature group Lib_SB::Com_Subscribe;
-			Unsubscribe: feature group Lib_SB::Com_Unsubscribe;
-			SendMsg: feature group Lib_SB::Com_SendMsg;
-			RcvMsg: feature group Lib_SB::Com_RcvMsg;
+			CreatePipe: feature group Com_CreatePipe;
+			DeletePipe: feature group Com_DeletePipe;
+			Subscribe: feature group Com_Subscribe;
+			Unsubscribe: feature group Com_Unsubscribe;
+			SendMsg: feature group Com_SendMsg;
+			RcvMsg: feature group Com_RcvMsg;
 	inverse of sb_api_provide
 	end sb_api_require;
+	
+	feature group read_pipe
+		features
+			PipeId: out data port Base_Types::Unsigned_8;
+			Pipe: in data port Data_SB::struct.CFE_SB_PipeD_t;
+	end read_pipe;
+	
+	feature group read_pipe_d
+		features
+			PipeId: in data port Base_Types::Unsigned_8;
+			Pipe: out data port Data_SB::struct.CFE_SB_PipeD_t;
+	inverse of read_pipe
+	end read_pipe_d;
+	
+	feature group read_route
+		features
+			msg1_es: in data port Base_Types::Boolean;
+			msg1_sb: in data port Base_Types::Boolean;
+			msg1_evs: in data port Base_Types::Boolean;
+			msg1_time: in data port Base_Types::Boolean;
+			msg1_app1: in data port Base_Types::Boolean;
+			msg2_es: in data port Base_Types::Boolean;
+			msg2_sb: in data port Base_Types::Boolean;
+			msg2_evs: in data port Base_Types::Boolean;
+			msg2_time: in data port Base_Types::Boolean;
+			msg2_app1: in data port Base_Types::Boolean;
+	end read_route;
+	
+	feature group read_route_d
+		features
+			msg1_es: out data port Base_Types::Boolean;
+			msg1_sb: out data port Base_Types::Boolean;
+			msg1_evs: out data port Base_Types::Boolean;
+			msg1_time: out data port Base_Types::Boolean;
+			msg1_app1: out data port Base_Types::Boolean;
+			msg2_es: out data port Base_Types::Boolean;
+			msg2_sb: out data port Base_Types::Boolean;
+			msg2_evs: out data port Base_Types::Boolean;
+			msg2_time: out data port Base_Types::Boolean;
+			msg2_app1: out data port Base_Types::Boolean;
+	inverse of read_route
+	end read_route_d;
 	
 	abstract lib_func
 		features
@@ -224,11 +266,62 @@ public
 			**};
 	end lib_func;
 	
-	abstract implementation lib_func.im
+	abstract implementation lib_func.impl
 		
-	end lib_func.im;
-
-	thread sb_lib
+	end lib_func.impl;
+	
+	abstract CreatePipe
+		features
+			Param: feature group Lib_CreatePipe;
+			PipeRead: feature group read_pipe;
+	end CreatePipe;
+	
+	abstract DeletePipe
+		features
+			Param: feature group Lib_DeletePipe;
+			PipeRead: feature group read_pipe;
+	end DeletePipe;
+	
+	abstract Subscribe
+		features
+			Param: feature group Lib_Subscribe;
+			PipeRead: feature group read_pipe;
+			RouteRead: feature group read_route;
+	end Subscribe;
+	
+	abstract Unsubscribe
+		features
+			Param: feature group Lib_Unsubscribe;
+			PipeRead: feature group read_pipe;
+			RouteRead: feature group read_route;
+	end Unsubscribe;
+	
+	abstract SendMsg
+		features
+			Param: feature group Lib_SendMsg;
+			PipeRead: feature group read_pipe;
+			RouteRead: feature group read_route;
+	end SendMsg;
+	
+	abstract RcvMsg
+		features
+			Param: feature group Lib_RcvMsg;
+			PipeRead: feature group read_pipe;
+	end RcvMsg;
+	
+	abstract ShareData
+		features
+			PipeRead: feature group read_pipe_d;
+			RouteRead: feature group read_route_d;
+			
+			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+	end ShareData;
+		
+	abstract sb_lib
 		features
 			CreatePipe: feature group Lib_CreatePipe;
 			DeletePipe: feature group Lib_DeletePipe;
@@ -381,9 +474,16 @@ public
          
 	end sb_lib;
 
-	thread implementation sb_lib.impl
+	abstract implementation sb_lib.impl
 		subcomponents
-			func: abstract lib_func;
+--			func: abstract lib_func;
+			CreatePipe_t: abstract CreatePipe;
+			DeletePipe_t: abstract DeletePipe;
+			Subscribe_t: abstract Subscribe;
+			Unsubscribe_t: abstract Unsubscribe;
+			SendMsg_t: abstract SendMsg;
+			RcvMsg_t: abstract RcvMsg;
+			ShareData: abstract ShareData;
 --			es_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
 --			sb_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 --			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
@@ -394,17 +494,37 @@ public
 --            lemma "": app1_pipe.InUse = true;
 --        **};
 		connections
-			func_RcvMsg: feature group RcvMsg <-> func.RcvMsg;
-			func_CreatePipe: feature group CreatePipe <-> func.CreatePipe;
-			func_DeletePipe: feature group DeletePipe <-> func.DeletePipe;
-			func_Subscribe: feature group Subscribe <-> func.Subscribe;
-			func_Unsubscribe: feature group Unsubscribe <-> func.Unsubscribe;
-			func_SendMsg: feature group SendMsg <-> func.SendMsg;
-			es_pipe_c: port func.es_pipe -> es_pipe;
-			sb_pipe_c: port func.sb_pipe -> sb_pipe;
-			app1_pipe_c: port func.app1_pipe -> app1_pipe;
-			time_pipe_c: port func.time_pipe -> time_pipe;
-			evs_pipe_c: port func.evs_pipe -> evs_pipe;
+--			func_RcvMsg: feature group RcvMsg <-> func.RcvMsg;
+--			func_CreatePipe: feature group CreatePipe <-> func.CreatePipe;
+--			func_DeletePipe: feature group DeletePipe <-> func.DeletePipe;
+--			func_Subscribe: feature group Subscribe <-> func.Subscribe;
+--			func_Unsubscribe: feature group Unsubscribe <-> func.Unsubscribe;
+--			func_SendMsg: feature group SendMsg <-> func.SendMsg;
+--			es_pipe_c: port func.es_pipe -> es_pipe;
+--			sb_pipe_c: port func.sb_pipe -> sb_pipe;
+--			app1_pipe_c: port func.app1_pipe -> app1_pipe;
+--			time_pipe_c: port func.time_pipe -> time_pipe;
+--			evs_pipe_c: port func.evs_pipe -> evs_pipe;
+			DeletePipe_p: feature group DeletePipe <-> DeletePipe_t.Param;
+			RcvMsg_p: feature group RcvMsg <-> RcvMsg_t.Param;
+			CreatePipe_p: feature group CreatePipe <-> CreatePipe_t.Param;
+			Subscribe_p: feature group Subscribe <-> Subscribe_t.Param;
+			Unsubscribe_p: feature group Unsubscribe <-> Unsubscribe_t.Param;
+			SendMsg_p: feature group SendMsg <-> SendMsg_t.Param;
+			CreatePipe_pr: feature group CreatePipe_t.PipeRead <-> ShareData.PipeRead;
+			Unsubscribe_pr: feature group Unsubscribe_t.PipeRead <-> ShareData.PipeRead;
+			SendMsg_pr: feature group SendMsg_t.PipeRead <-> ShareData.PipeRead;
+			DeletePipe_pr: feature group DeletePipe_t.PipeRead <-> ShareData.PipeRead;
+			Subscribe_pr: feature group Subscribe_t.PipeRead <-> ShareData.PipeRead;
+			RcvMsg_pr: feature group RcvMsg_t.PipeRead <-> ShareData.PipeRead;
+			Unsubscribe_rr: feature group Unsubscribe_t.RouteRead <-> ShareData.RouteRead;
+			SendMsg_rr: feature group SendMsg_t.RouteRead <-> ShareData.RouteRead;
+			Subscribe_rr: feature group Subscribe_t.RouteRead <-> ShareData.RouteRead;
+			evs_pipe_c: port ShareData.evs_pipe -> evs_pipe;
+			app1_pipe_c: port ShareData.app1_pipe -> app1_pipe;
+			es_pipe_c: port ShareData.es_pipe -> es_pipe;
+			sb_pipe_c: port ShareData.sb_pipe -> sb_pipe;
+			time_pipe_c: port ShareData.time_pipe -> time_pipe;
 	end sb_lib.impl;
 
 --------------------------------------------------------------------------

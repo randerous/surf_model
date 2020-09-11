@@ -126,7 +126,7 @@ public
 			evs: thread Component_EVS::evs;
 			time: thread Component_TIME::time;
 			es_lib: thread Lib_ES::es_lib.impl;
-			sb_lib: thread Lib_SB::sb_lib.impl;
+			sb_lib: abstract Lib_SB::sb_lib.impl;
 			evs_lib: thread Lib_EVS::evs_lib.impl;
 			time_lib: thread Lib_TIME::time_lib.impl;
 			
