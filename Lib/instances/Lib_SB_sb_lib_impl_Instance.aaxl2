@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="sb_lib_impl_Instance" category="thread">
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="sb_lib_impl_Instance">
   <featureInstance name="CreatePipe" category="featureGroup" direction="in out">
     <featureInstance name="AppId">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -29,7 +29,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -59,7 +59,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Depth">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -89,19 +89,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.2"/>
-    </featureInstance>
-    <featureInstance name="PipeName">
-      <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-        <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
-        <ownedValue>
-          <ownedValue xsi:type="aadl2:NamedValue">
-            <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
-          </ownedValue>
-        </ownedValue>
-        <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.0"/>
-      </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -113,7 +101,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.4"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.3"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -143,9 +131,9 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.5"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.4"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.0"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.0"/>
   </featureInstance>
   <featureInstance name="DeletePipe" category="featureGroup" direction="in out">
     <featureInstance name="PipeId">
@@ -176,7 +164,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="AppId">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -206,7 +194,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -218,7 +206,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -248,9 +236,9 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.3"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.1"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.1"/>
   </featureInstance>
   <featureInstance name="Subscribe" category="featureGroup" direction="in out">
     <featureInstance name="MsgId">
@@ -281,7 +269,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -311,7 +299,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -323,7 +311,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -353,9 +341,9 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.3"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.2"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.2"/>
   </featureInstance>
   <featureInstance name="Unsubscribe" category="featureGroup" direction="in out">
     <featureInstance name="MsgId">
@@ -386,7 +374,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -416,7 +404,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -428,7 +416,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -458,13 +446,13 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.3"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.3"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.3"/>
   </featureInstance>
   <featureInstance name="SendMsg" category="featureGroup" direction="in out">
     <featureInstance name="Msg">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -476,7 +464,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -506,9 +494,9 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.2"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.4"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.4"/>
   </featureInstance>
   <featureInstance name="RcvMsg" category="featureGroup" direction="in out">
     <featureInstance name="PipeId">
@@ -539,7 +527,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="TimeOut">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -569,10 +557,10 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Msg" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Valid">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -584,7 +572,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.3"/>
     </featureInstance>
     <featureInstance name="Result" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -614,24 +602,24 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.4"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.4"/>
     </featureInstance>
-    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedFeatureGroup.5"/>
+    <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedFeatureGroup.5"/>
   </featureInstance>
   <featureInstance name="es_pipe" direction="out">
-    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.0"/>
+    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedDataPort.0"/>
   </featureInstance>
   <featureInstance name="sb_pipe" direction="out">
-    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.1"/>
+    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedDataPort.1"/>
   </featureInstance>
   <featureInstance name="evs_pipe" direction="out">
-    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.2"/>
+    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedDataPort.2"/>
   </featureInstance>
   <featureInstance name="time_pipe" direction="out">
-    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.3"/>
+    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedDataPort.3"/>
   </featureInstance>
   <featureInstance name="app1_pipe" direction="out">
-    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.4"/>
+    <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedDataPort.4"/>
   </featureInstance>
   <componentInstance name="func">
     <featureInstance name="CreatePipe" category="featureGroup" direction="in out">
@@ -663,7 +651,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="PipeId">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -693,7 +681,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Depth">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -723,19 +711,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.2"/>
-      </featureInstance>
-      <featureInstance name="PipeName">
-        <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-          <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
-          <ownedValue>
-            <ownedValue xsi:type="aadl2:NamedValue">
-              <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.7"/>
-            </ownedValue>
-          </ownedValue>
-          <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.0"/>
-        </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.3"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.2"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -747,7 +723,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.4"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.3"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -777,9 +753,9 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.5"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.17/@ownedDataPort.4"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.0"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.0"/>
     </featureInstance>
     <featureInstance name="DeletePipe" category="featureGroup" direction="in out">
       <featureInstance name="PipeId">
@@ -810,7 +786,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="AppId">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -840,7 +816,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -852,7 +828,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.2"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.2"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -882,9 +858,9 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.8/@ownedDataPort.3"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.19/@ownedDataPort.3"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.1"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.1"/>
     </featureInstance>
     <featureInstance name="Subscribe" category="featureGroup" direction="in out">
       <featureInstance name="MsgId">
@@ -915,7 +891,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="PipeId">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -945,7 +921,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -957,7 +933,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.2"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.2"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -987,9 +963,9 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.10/@ownedDataPort.3"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.21/@ownedDataPort.3"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.2"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.2"/>
     </featureInstance>
     <featureInstance name="Unsubscribe" category="featureGroup" direction="in out">
       <featureInstance name="MsgId">
@@ -1020,7 +996,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="PipeId">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1050,7 +1026,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1062,7 +1038,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.2"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.2"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1092,13 +1068,13 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.12/@ownedDataPort.3"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.23/@ownedDataPort.3"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.3"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.3"/>
     </featureInstance>
     <featureInstance name="SendMsg" category="featureGroup" direction="in out">
       <featureInstance name="Msg">
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1110,7 +1086,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1140,9 +1116,9 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.14/@ownedDataPort.2"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.25/@ownedDataPort.2"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.4"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.4"/>
     </featureInstance>
     <featureInstance name="RcvMsg" category="featureGroup" direction="in out">
       <featureInstance name="PipeId">
@@ -1173,7 +1149,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.0"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.0"/>
       </featureInstance>
       <featureInstance name="TimeOut">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1203,10 +1179,10 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.1"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.1"/>
       </featureInstance>
       <featureInstance name="Msg" direction="out">
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.2"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.2"/>
       </featureInstance>
       <featureInstance name="Valid">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1218,7 +1194,7 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.3"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.3"/>
       </featureInstance>
       <featureInstance name="Result" direction="out">
         <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -1248,184 +1224,154 @@
           </ownedValue>
           <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
         </ownedPropertyAssociation>
-        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedDataPort.4"/>
+        <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.27/@ownedDataPort.4"/>
       </featureInstance>
-      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.5"/>
+      <feature xsi:type="aadl2:FeatureGroup" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedFeatureGroup.5"/>
     </featureInstance>
     <featureInstance name="es_pipe" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="sb_pipe" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="evs_pipe" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="time_pipe" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.3"/>
     </featureInstance>
     <featureInstance name="app1_pipe" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.4"/>
+      <feature xsi:type="aadl2:DataPort" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.6/@ownedDataPort.4"/>
     </featureInstance>
-    <subcomponent xsi:type="aadl2:AbstractSubcomponent" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedAbstractSubcomponent.0"/>
+    <subcomponent xsi:type="aadl2:AbstractSubcomponent" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedAbstractSubcomponent.0"/>
     <index>0</index>
     <classifier xsi:type="aadl2:AbstractType" href="../Lib_SB.aadl#Lib_SB.lib_func"/>
   </componentInstance>
   <connectionInstance name="CreatePipe.AppId -> func.CreatePipe.AppId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.0" source="//@featureInstance.0/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.0/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="CreatePipe.PipeId -> func.CreatePipe.PipeId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.1" source="//@featureInstance.0/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.0/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="CreatePipe.Depth -> func.CreatePipe.Depth" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.2" source="//@featureInstance.0/@featureInstance.2">
     <connectionReference context="/" source="//@featureInstance.0/@featureInstance.2" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.2">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="CreatePipe.PipeName -> func.CreatePipe.PipeName" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.3" source="//@featureInstance.0/@featureInstance.3">
+  <connectionInstance name="CreatePipe.Valid -> func.CreatePipe.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.3" source="//@featureInstance.0/@featureInstance.3">
     <connectionReference context="/" source="//@featureInstance.0/@featureInstance.3" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.3">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="CreatePipe.Valid -> func.CreatePipe.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.4" source="//@featureInstance.0/@featureInstance.4">
-    <connectionReference context="/" source="//@featureInstance.0/@featureInstance.4" destination="//@componentInstance.0/@featureInstance.0/@featureInstance.4">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="DeletePipe.PipeId -> func.DeletePipe.PipeId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.0" source="//@featureInstance.1/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.1/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.2"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.2"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="DeletePipe.AppId -> func.DeletePipe.AppId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.1" source="//@featureInstance.1/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.1/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.2"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.2"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="DeletePipe.Valid -> func.DeletePipe.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.2" source="//@featureInstance.1/@featureInstance.2">
     <connectionReference context="/" source="//@featureInstance.1/@featureInstance.2" destination="//@componentInstance.0/@featureInstance.1/@featureInstance.2">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.2"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.2"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Subscribe.MsgId -> func.Subscribe.MsgId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.0" source="//@featureInstance.2/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.2/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.3"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.3"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Subscribe.PipeId -> func.Subscribe.PipeId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.1" source="//@featureInstance.2/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.2/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.3"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.3"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Subscribe.Valid -> func.Subscribe.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.2" source="//@featureInstance.2/@featureInstance.2">
     <connectionReference context="/" source="//@featureInstance.2/@featureInstance.2" destination="//@componentInstance.0/@featureInstance.2/@featureInstance.2">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.3"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.3"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Unsubscribe.MsgId -> func.Unsubscribe.MsgId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.0" source="//@featureInstance.3/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.3/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.4"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Unsubscribe.PipeId -> func.Unsubscribe.PipeId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.1" source="//@featureInstance.3/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.3/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.4"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="Unsubscribe.Valid -> func.Unsubscribe.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.2" source="//@featureInstance.3/@featureInstance.2">
     <connectionReference context="/" source="//@featureInstance.3/@featureInstance.2" destination="//@componentInstance.0/@featureInstance.3/@featureInstance.2">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.4"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="SendMsg.Msg -> func.SendMsg.Msg" kind="portConnection" destination="//@componentInstance.0/@featureInstance.4/@featureInstance.0" source="//@featureInstance.4/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.4/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.4/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.5"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.5"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="SendMsg.Valid -> func.SendMsg.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.4/@featureInstance.1" source="//@featureInstance.4/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.4/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.4/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.5"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.5"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="RcvMsg.PipeId -> func.RcvMsg.PipeId" kind="portConnection" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.0" source="//@featureInstance.5/@featureInstance.0">
     <connectionReference context="/" source="//@featureInstance.5/@featureInstance.0" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.0">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="RcvMsg.TimeOut -> func.RcvMsg.TimeOut" kind="portConnection" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.1" source="//@featureInstance.5/@featureInstance.1">
     <connectionReference context="/" source="//@featureInstance.5/@featureInstance.1" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.1">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="RcvMsg.Valid -> func.RcvMsg.Valid" kind="portConnection" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.3" source="//@featureInstance.5/@featureInstance.3">
     <connectionReference context="/" source="//@featureInstance.5/@featureInstance.3" destination="//@componentInstance.0/@featureInstance.5/@featureInstance.3">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
-  <connectionInstance name="func.CreatePipe.Result -> CreatePipe.Result" kind="portConnection" destination="//@featureInstance.0/@featureInstance.5" source="//@componentInstance.0/@featureInstance.0/@featureInstance.5">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.0/@featureInstance.5" destination="//@featureInstance.0/@featureInstance.5" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.1"/>
+  <connectionInstance name="func.CreatePipe.Result -> CreatePipe.Result" kind="portConnection" destination="//@featureInstance.0/@featureInstance.4" source="//@componentInstance.0/@featureInstance.0/@featureInstance.4">
+    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.0/@featureInstance.4" destination="//@featureInstance.0/@featureInstance.4" reverse="true">
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.1"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.DeletePipe.Result -> DeletePipe.Result" kind="portConnection" destination="//@featureInstance.1/@featureInstance.3" source="//@componentInstance.0/@featureInstance.1/@featureInstance.3">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.1/@featureInstance.3" destination="//@featureInstance.1/@featureInstance.3" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.2"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.2"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.Subscribe.Result -> Subscribe.Result" kind="portConnection" destination="//@featureInstance.2/@featureInstance.3" source="//@componentInstance.0/@featureInstance.2/@featureInstance.3">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.2/@featureInstance.3" destination="//@featureInstance.2/@featureInstance.3" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.3"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.3"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.Unsubscribe.Result -> Unsubscribe.Result" kind="portConnection" destination="//@featureInstance.3/@featureInstance.3" source="//@componentInstance.0/@featureInstance.3/@featureInstance.3">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.3/@featureInstance.3" destination="//@featureInstance.3/@featureInstance.3" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.4"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.4"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.SendMsg.Result -> SendMsg.Result" kind="portConnection" destination="//@featureInstance.4/@featureInstance.2" source="//@componentInstance.0/@featureInstance.4/@featureInstance.2">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.4/@featureInstance.2" destination="//@featureInstance.4/@featureInstance.2" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.5"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.5"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.RcvMsg.Msg -> RcvMsg.Msg" kind="portConnection" destination="//@featureInstance.5/@featureInstance.2" source="//@componentInstance.0/@featureInstance.5/@featureInstance.2">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.5/@featureInstance.2" destination="//@featureInstance.5/@featureInstance.2" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.0"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <connectionInstance name="func.RcvMsg.Result -> RcvMsg.Result" kind="portConnection" destination="//@featureInstance.5/@featureInstance.4" source="//@componentInstance.0/@featureInstance.5/@featureInstance.4">
     <connectionReference context="/" source="//@componentInstance.0/@featureInstance.5/@featureInstance.4" destination="//@featureInstance.5/@featureInstance.4" reverse="true">
-      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedFeatureGroupConnection.0"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="func.es_pipe -> es_pipe" kind="portConnection" destination="//@featureInstance.6" source="//@componentInstance.0/@featureInstance.6">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.6" destination="//@featureInstance.6">
-      <connection xsi:type="aadl2:PortConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.0"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="func.sb_pipe -> sb_pipe" kind="portConnection" destination="//@featureInstance.7" source="//@componentInstance.0/@featureInstance.7">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.7" destination="//@featureInstance.7">
-      <connection xsi:type="aadl2:PortConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.1"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="func.evs_pipe -> evs_pipe" kind="portConnection" destination="//@featureInstance.8" source="//@componentInstance.0/@featureInstance.8">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.8" destination="//@featureInstance.8">
-      <connection xsi:type="aadl2:PortConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.4"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="func.time_pipe -> time_pipe" kind="portConnection" destination="//@featureInstance.9" source="//@componentInstance.0/@featureInstance.9">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.9" destination="//@featureInstance.9">
-      <connection xsi:type="aadl2:PortConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.3"/>
-    </connectionReference>
-  </connectionInstance>
-  <connectionInstance name="func.app1_pipe -> app1_pipe" kind="portConnection" destination="//@featureInstance.10" source="//@componentInstance.0/@featureInstance.10">
-    <connectionReference context="/" source="//@componentInstance.0/@featureInstance.10" destination="//@featureInstance.10">
-      <connection xsi:type="aadl2:PortConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedPortConnection.2"/>
+      <connection xsi:type="aadl2:FeatureGroupConnection" href="../Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.16/@ownedFeatureGroupConnection.0"/>
     </connectionReference>
   </connectionInstance>
   <systemOperationMode name="No Modes"/>
-  <componentImplementation xsi:type="aadl2:ThreadImplementation" href="../Lib_SB.aadl#Lib_SB.sb_lib.impl"/>
+  <componentImplementation xsi:type="aadl2:AbstractImplementation" href="../Lib_SB.aadl#Lib_SB.sb_lib.impl"/>
 </instance:SystemInstance>
