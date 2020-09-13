@@ -1,0 +1,86 @@
+[
+    {
+        "name": "Verification for sb_lib.impl",
+        "result": "Unknown",
+        "timestamp": 1600005222858,
+        "hashcode": "Ózƒè\n\bÖü?\u0018ÏC¶fº`",
+        "analyses": [
+            {
+                "name": "Contract Guarantees",
+                "result": "Valid",
+                "timestamp": 1600005222858,
+                "hashcode": "Ózƒè\n\bÖü?\u0018ÏC¶fº`",
+                "analyses": [
+                    {
+                        "name": "Subcomponent Assumptions",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if CreatePipe appid \u003e\u003d PIPENUM,then BAD_ARGUMENT,else SUCCESS",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if DeletePipe appid \u003e\u003d PIPENUM,then BAD_ARGUMENT,else SUCCESS",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if Subscribe pipeid \u003e\u003d PIPENUM or \u003c 0,then BAD_ARGUMENT,else SUCCESS",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if Unsubscribe pipeid \u003e\u003d PIPENUM or \u003c 0,then BAD_ARGUMENT,else SUCCESS",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if SendMsg arg is error then report else success ",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if RcvMsg arg is error then report else success ",
+                        "result": "Valid"
+                    },
+                    {
+                        "name": "if es sub msg1, then es receive msg1",
+                        "result": "Valid"
+                    }
+                ]
+            },
+            {
+                "name": "This component consistent",
+                "result": "Valid",
+                "timestamp": 1600005222858,
+                "hashcode": "Ózƒè\n\bÖü?\u0018ÏC¶fº`",
+                "analyses": [
+                    {
+                        "name": "Result",
+                        "result": "Valid"
+                    }
+                ]
+            },
+            {
+                "name": "func consistent",
+                "result": "Unknown",
+                "timestamp": 1600005222858,
+                "hashcode": "Ózƒè\n\bÖü?\u0018ÏC¶fº`",
+                "analyses": [
+                    {
+                        "name": "Result",
+                        "result": "Unknown"
+                    }
+                ]
+            },
+            {
+                "name": "Component composition consistent",
+                "result": "Unknown",
+                "timestamp": 1600005222858,
+                "hashcode": "Ózƒè\n\bÖü?\u0018ÏC¶fº`",
+                "analyses": [
+                    {
+                        "name": "Result",
+                        "result": "Unknown"
+                    }
+                ]
+            }
+        ]
+    }
+]
