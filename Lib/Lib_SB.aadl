@@ -173,15 +173,23 @@ public
             else true;
             
             eq es_sub_msg1 : bool = false -> 
-            if( (pre(es_sub_msg1) = true and not(Subscribe.Valid = true or Unsubscribe.Valid = true))
-            or ((Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1)) )
-            then true
-            else false;
-            
---            guarantee "if es sub msg1, then es receive msg1": true ->
---               if es_sub_msg1 and SendMsg.Valid = true and SendMsg.Msg.MsgId = 1
---               then  es_pipe.MsgId = 1
---               else true;
+            if( 
+            (pre(es_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 0)
+            )
+            or
+            ( pre(es_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 0)  
+            )
+            )
+            then  false
+            else  true;
+           
+           
+            guarantee "if es sub msg1, then es receive msg1": true ->
+               if es_sub_msg1 and SendMsg.Valid = true and SendMsg.Msg.MsgId = 1
+               then  es_pipe.MsgId = 1
+               else true;
         **};
          
          
@@ -219,7 +227,7 @@ public
 			func_Subscribe: feature group Subscribe <-> func.Subscribe;
 			func_Unsubscribe: feature group Unsubscribe <-> func.Unsubscribe;
 			func_SendMsg: feature group SendMsg <-> func.SendMsg;
- 
+
 --			es_pipe_c: port func.es_pipe -> es_pipe;
 --			sb_pipe_c: port func.sb_pipe -> sb_pipe;
 --			app1_pipe_c: port func.app1_pipe -> app1_pipe;

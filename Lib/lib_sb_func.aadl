@@ -160,94 +160,167 @@ public
 				eq msg2_es_pipe : bool,  msg2_sb_pipe : bool,
 			       msg2_evs_pipe : bool, msg2_time_pipe : bool, 
 			       msg2_app1_pipe : bool;
-			    
+			   
+			   
+			   assume "no CreatePipe and DeletePipe at same time": 
+			      not(CreatePipe.Valid = true and DeletePipe.Valid = true);
+			   assume "no Subscribe and Unsubscribe at same time": 
+			      not(Subscribe.Valid = true and Unsubscribe.Valid = true); 
 			   --set router  
+			   
+			   --no sub no unsub, then router keep itself
+			   
+
+			   -- sub or unsub has nothing to do with this router item
+			    
+			    guarantee "no modify msg1_es": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 1 and Subscribe.PipeId = 0))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 0))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg1_es_pipe = pre(msg1_es_pipe);
+			    
+			    guarantee "no modify msg1_sb": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 1 and Subscribe.PipeId = 1))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg1_sb_pipe = pre(msg1_sb_pipe);
+			       
+			    guarantee "no modify msg1_evs": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 1 and Subscribe.PipeId = 2))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 2))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg1_evs_pipe = pre(msg1_evs_pipe);
+			    
+			    guarantee "no modify msg1_time": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 1 and Subscribe.PipeId = 3))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 3))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg1_time_pipe = pre(msg1_time_pipe);
+			       
+			    guarantee "no modify msg1_app1": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 1 and Subscribe.PipeId = 4))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 4))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg1_app1_pipe = pre(msg1_app1_pipe);
+			    
+			    guarantee "no modify msg2_es": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 2 and Subscribe.PipeId = 0))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 0))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg2_es_pipe = pre(msg2_es_pipe);
+			    
+			    guarantee "no modify msg2_sb": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 2 and Subscribe.PipeId = 1))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 1))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg2_sb_pipe = pre(msg2_sb_pipe);
+			       
+			    guarantee "no modify msg2_evs": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 2 and Subscribe.PipeId = 2))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 2))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg2_evs_pipe = pre(msg2_evs_pipe);
+			    
+			    guarantee "no modify msg2_time": true -> 
+			       (Subscribe.Valid = true and not (Subscribe.MsgId = 2 and Subscribe.PipeId = 3))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 3))
+			       or (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       => msg2_time_pipe = pre(msg2_time_pipe);
+			       
+			    guarantee "no modify msg2_app1": true -> 
+			       (Subscribe.Valid = false and Unsubscribe.Valid = false)
+			       or (Subscribe.Valid = true and not (Subscribe.MsgId = 2 and Subscribe.PipeId = 4))
+			       or (Unsubscribe.Valid = true and not (Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 4))
+			       
+			       => msg2_app1_pipe = pre(msg2_app1_pipe);
+			       
 			   --subscribe info
 			    guarantee "es subscribe msg1": msg1_es_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 0
-			      then true
-			      else pre(msg1_es_pipe);
+			      then msg1_es_pipe = true
+			      else true;
+			       
 			    guarantee "sb subscribe msg1": msg1_sb_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1
-			      then true
-			      else pre(msg1_sb_pipe);
+			      then msg1_sb_pipe = true
+			      else true;
 			    guarantee "evs subscribe msg1": msg1_evs_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 2
-			      then true
-			      else pre(msg1_evs_pipe);
+			      then msg1_evs_pipe = true
+			      else true;
 			    guarantee "time subscribe msg1": msg1_time_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 3
-			      then true
-			      else pre(msg1_time_pipe);
+			      then msg1_time_pipe = true
+			      else true;
 			    guarantee "app1 subscribe msg1": msg1_app1_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 4
-			      then true
-			      else pre(msg1_app1_pipe);
-			      
+			      then msg1_app1_pipe = true
+			      else true;
+--			      
 			    guarantee "es subscribe msg2": msg2_es_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 0
-			      then true
-			      else pre(msg2_es_pipe);
+			      then msg2_es_pipe = true
+			      else true;
 			    guarantee "sb subscribe msg2": msg2_sb_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 1
-			      then true
-			      else pre(msg2_sb_pipe);
+			      then msg2_sb_pipe = true
+			      else true;
 			    guarantee "evs subscribe msg2": msg2_evs_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 2
-			      then true
-			      else pre(msg2_evs_pipe);
+			      then msg2_evs_pipe = true
+			      else true;
 			    guarantee "time subscribe msg2": msg2_time_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 3
-			      then true
-			      else pre(msg2_time_pipe);
+			      then msg2_time_pipe = true
+			      else true;
 			    guarantee "app1 subscribe msg2": msg2_app1_pipe = false ->
 			      if Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 4
-			      then true
-			      else pre(msg2_app1_pipe);
-			      
+			      then msg2_app1_pipe = true
+			      else true;
+ 		      
 			    --unsubscribe info
 			    guarantee "es Unsubscribe msg1": msg1_es_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 0
-			      then false
-			      else pre(msg1_es_pipe);
+			      then msg1_es_pipe = false
+			      else true;
 			    guarantee "sb Unsubscribe msg1": msg1_sb_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1
-			      then false
-			      else pre(msg1_sb_pipe);
+			      then msg1_sb_pipe = false
+			      else true;
 			    guarantee "evs Unsubscribe msg1": msg1_evs_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 2
-			      then false
-			      else pre(msg1_evs_pipe);
+			      then msg1_evs_pipe = false
+			      else true;
 			    guarantee "time Unsubscribe msg1": msg1_time_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 3
-			      then false
-			      else pre(msg1_time_pipe);
+			      then msg1_time_pipe = false
+			      else true;
 			    guarantee "app1 Unsubscribe msg1": msg1_app1_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 4
-			      then false
-			      else pre(msg1_app1_pipe);
+			      then msg1_app1_pipe = false
+			      else true;
 			      
 			    guarantee "es Unsubscribe msg2": msg2_es_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 0
-			      then false
-			      else pre(msg2_es_pipe);
+			      then msg2_es_pipe = false
+			      else true;
 			    guarantee "sb Unsubscribe msg2": msg2_sb_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 1
-			      then false
-			      else pre(msg2_sb_pipe);
+			      then msg2_sb_pipe = false
+			      else true;
 			    guarantee "evs Unsubscribe msg2": msg2_evs_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 2
-			      then false
-			      else pre(msg2_evs_pipe);
+			      then msg2_evs_pipe = false
+			      else true;
 			    guarantee "time Unsubscribe msg2": msg2_time_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 3
-			      then false
-			      else pre(msg2_time_pipe);
+			      then msg2_time_pipe = false
+			      else true;
 			    guarantee "app1 Unsubscribe msg2": msg2_app1_pipe = false ->
 			      if Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 4
-			      then false
-			      else pre(msg2_app1_pipe);
-			    
+			      then msg2_app1_pipe = false
+			      else true;
+--			    
 --			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
 --			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 --			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
