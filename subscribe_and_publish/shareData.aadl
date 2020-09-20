@@ -1,0 +1,198 @@
+package ShareData
+public
+	with port_struct;
+	with Data_SB;
+	abstract ShareData
+		features
+			 
+			CreatePipe: feature group port_struct::Lib_CreatePipe;
+			DeletePipe: feature group port_struct::Lib_DeletePipe;
+			Subscribe: feature group port_struct::Lib_Subscribe;
+			Unsubscribe: feature group port_struct::Lib_Unsubscribe;
+			SendMsg: feature group port_struct::Lib_SendMsg;
+			RcvMsg: feature group port_struct::Lib_RcvMsg;
+			
+			PipeRead: feature group port_struct::read_pipe_d;
+			RouteRead: feature group port_struct::read_route_d;
+			
+			es_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 0
+			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
+			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
+			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
+			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4预先分配的管道空间，提供激活字段InUse
+			
+			
+	   annex agree{**
+--	   	    msg1_es: in data port Base_Types::Boolean;   10
+--			msg1_sb: in data port Base_Types::Boolean;   11 
+--			msg1_evs: in data port Base_Types::Boolean;  12 
+--			msg1_time: in data port Base_Types::Boolean; 13 
+--			msg1_app1: in data port Base_Types::Boolean; 14
+--			msg2_es: in data port Base_Types::Boolean;   20
+--			msg2_sb: in data port Base_Types::Boolean;   21
+--			msg2_evs: in data port Base_Types::Boolean;  22
+--			msg2_time: in data port Base_Types::Boolean; 23
+--			msg2_app1: in data port Base_Types::Boolean; 24 
+	   	    
+	   	    --router for msg1
+	   	    eq es_sub_msg1 : bool = false -> 
+            if( 
+            (pre(es_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 0)
+            )
+            or
+            ( pre(es_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 0)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq sb_sub_msg1 : bool = false -> 
+            if( 
+            (pre(sb_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 1)
+            )
+            or
+            ( pre(sb_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 1)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq evs_sub_msg1 : bool = false -> 
+            if( 
+            (pre(evs_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 2)
+            )
+            or
+            ( pre(evs_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 2)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq time_sub_msg1 : bool = false -> 
+            if( 
+            (pre(time_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 3)
+            )
+            or
+            ( pre(time_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 3)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq app1_sub_msg1 : bool = false -> 
+            if( 
+            (pre(app1_sub_msg1) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 1 and Unsubscribe.PipeId = 4)
+            )
+            or
+            ( pre(app1_sub_msg1) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 1 and Subscribe.PipeId = 4)  
+            )
+            )
+            then  false
+            else  true;
+            
+            
+            --router for msg2
+            eq es_sub_msg2 : bool = false -> 
+            if( 
+            (pre(es_sub_msg2) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 0)
+            )
+            or
+            ( pre(es_sub_msg2) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 0)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq sb_sub_msg2 : bool = false -> 
+            if( 
+            (pre(sb_sub_msg2) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 1)
+            )
+            or
+            ( pre(sb_sub_msg2) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 1)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq evs_sub_msg2 : bool = false -> 
+            if( 
+            (pre(evs_sub_msg2) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 2)
+            )
+            or
+            ( pre(evs_sub_msg2) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 2)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq time_sub_msg2 : bool = false -> 
+            if( 
+            (pre(time_sub_msg2) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 3)
+            )
+            or
+            ( pre(time_sub_msg2) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 3)  
+            )
+            )
+            then  false
+            else  true;
+            
+            eq app1_sub_msg2 : bool = false -> 
+            if( 
+            (pre(app1_sub_msg2) = true and  
+             ( Unsubscribe.Valid = true and Unsubscribe.MsgId = 2 and Unsubscribe.PipeId = 4)
+            )
+            or
+            ( pre(app1_sub_msg2) = false and 
+              not(Subscribe.Valid = true and Subscribe.MsgId = 2 and Subscribe.PipeId = 4)  
+            )
+            )
+            then  false
+            else  true;
+            
+            guarantee " if sub then send": 
+                 if(SendMsg.Valid = true) 
+                 then(
+                 	if(SendMsg.Msg.MsgId = 1) 
+                 	then(
+                 		(es_sub_msg1 => es_pipe.MsgId = 1) and
+                 		(sb_sub_msg1 => sb_pipe.MsgId = 1) and
+                 		(evs_sub_msg1 => evs_pipe.MsgId = 1) and
+                 		(time_sub_msg1 => time_pipe.MsgId = 1) and
+                 		(app1_sub_msg1 => app1_pipe.MsgId = 1)  
+                 	)else if(SendMsg.Msg.MsgId = 2)
+                 	then(
+                 		(es_sub_msg2 => es_pipe.MsgId = 2) and
+                 		(sb_sub_msg2 => sb_pipe.MsgId = 2) and
+                 		(evs_sub_msg2 => evs_pipe.MsgId = 2) and
+                 		(time_sub_msg2 => time_pipe.MsgId = 2) and
+                 		(app1_sub_msg2 => app1_pipe.MsgId = 2)  
+                 	)else true             
+                 )
+                  else true;
+            
+              
+	   **}; 
+	end ShareData;
+		
+	
+end ShareData;
+
+

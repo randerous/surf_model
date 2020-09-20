@@ -1,0 +1,218 @@
+package sb_controller
+
+public
+	with port_struct;
+	abstract CreatePipe
+		features
+			Param: feature group port_struct::Lib_CreatePipe;
+			PipeRead: feature group port_struct::read_pipe;
+			cmd: feature group port_struct::Com_CreatePipe;
+	   annex agree{**
+            eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+		    
+		    eq Create_Pipe:  bool = Param.Result = SUCCESS and 
+			                        cmd.PipeId = Param.AppId and
+			                        cmd.Depth =  Param.Depth and
+			                        cmd.Valid = true;
+			
+			eq Do_Nothing: bool = (cmd.Valid = false);                        
+			 		                        
+        	guarantee "if CreatePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if Param.Valid = true
+        	then (if (Param.AppId >= PIPENUM or Param.Depth < 1) then Param.Result = BAD_ARGUMENT and Do_Nothing
+        	  else Create_Pipe
+        	)else  Do_Nothing;
+	   **};
+	    
+	end CreatePipe;
+	
+	abstract DeletePipe
+		features
+			 
+			Param: feature group port_struct::Lib_DeletePipe;
+			PipeRead: feature group port_struct::read_pipe;
+			cmd: feature group port_struct::Com_DeletePipe;
+		annex agree{**
+			eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+	   	    
+	   	    eq Delete_Pipe:  bool = Param.Result = SUCCESS and 
+			                        cmd.PipeId = Param.AppId and
+			                        cmd.Valid = true;
+			eq Do_Nothing: bool = (cmd.Valid = false);       
+			                       
+	   	    guarantee "if DeletePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
+        	if Param.Valid = true
+        	then (if (Param.AppId >= PIPENUM ) then Param.Result = BAD_ARGUMENT and Do_Nothing
+        	  else Delete_Pipe
+        	)else Do_Nothing;
+	   **};
+	end DeletePipe;
+	
+	abstract Subscribe
+		features
+			Param: feature group port_struct::Lib_Subscribe;
+			PipeRead: feature group port_struct::read_pipe;
+			RouteRead: feature group port_struct::read_route;
+			cmd:  feature group port_struct::Com_Subscribe;
+		annex agree{**
+			eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+	   	    --按照 消息-管道 的对应添加 路由 数据结构
+            eq MAX_MSGID: int = 64;
+            eq MAX_SUB_PER_MSG: int = 16;
+            --留一个消息的数据结构没写，包含消息的当前被订阅数 MAX_DESTS_MET,,BUF_ALOC_ERR
+            
+            eq subscription: bool = Param.Result = SUCCESS and
+                                    cmd.MsgId = Param.MsgId and
+                                    cmd.PipeId = Param.PipeId and
+                                    cmd.Valid = true;
+            eq Do_Nothing: bool = (cmd.Valid = false);       
+            guarantee "if Subscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
+            if Param.Valid = true 
+            then (if Param.PipeId < 0 or Param.PipeId > PIPENUM or 
+            	Param.MsgId < 0 
+            	then Param.Result = BAD_ARGUMENT and Do_Nothing
+            	else (if Param.MsgId > MAX_MSGID 
+            		then  Param.Result = MAX_MSGS_MET and Do_Nothing
+            		else subscription
+            	)
+            )else Do_Nothing;  
+	   **};
+	end Subscribe;
+	
+	abstract Unsubscribe
+		features
+			Param: feature group port_struct::Lib_Unsubscribe;
+			PipeRead: feature group port_struct::read_pipe;
+			RouteRead: feature group port_struct::read_route;
+			cmd:  feature group port_struct::Com_Unsubscribe;
+		annex agree{**
+			eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			 
+	   	    eq BUF_ALOC_ERR: int = 8;
+	   	    --按照 消息-管道 的对应添加 路由 数据结构
+            eq MAX_MSGID: int = 64;
+            eq MAX_SUB_PER_MSG: int = 16;
+            eq unsubscription: bool = Param.Result = SUCCESS and
+                                    cmd.MsgId = Param.MsgId and
+                                    cmd.PipeId = Param.PipeId and
+                                    cmd.Valid = true;
+            eq Do_Nothing: bool = (cmd.Valid = false);    
+	   	    guarantee "if Unsubscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
+            if Param.Valid = true 
+            then (if Param.PipeId < 0 or Param.PipeId > PIPENUM or 
+            	Param.MsgId < 0 or Param.MsgId  > MAX_MSGID 
+            	then 
+            	   Param.Result = BAD_ARGUMENT and Do_Nothing
+            	else 
+            	   unsubscription
+            )else  Do_Nothing;
+	   **};
+	end Unsubscribe;
+	
+	abstract SendMsg
+		features
+			Param: feature group port_struct::Lib_SendMsg;
+			PipeRead: feature group port_struct::read_pipe;
+			RouteRead: feature group port_struct::read_route;
+			cmd : feature group port_struct::Com_SendMsg;
+		annex agree{**
+			eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+		    
+		    eq EVT_MSGID: int = 3;
+            eq MAX_EVTID: int = 36;
+            eq MAX_MSGID: int = 64;
+            
+            eq MSGID_VALID: bool = Param.Msg.MsgId >= 0 and Param.Msg.MsgId < MAX_MSGID;
+            eq EVTID_VALID: bool = Param.Msg.EvtId >= 0 and Param.Msg.EvtId < MAX_EVTID;
+            eq EVS_SPECIAL: bool = not (EVTID_VALID and Param.Msg.MsgId <>  EVT_MSGID);
+            eq send_msg: bool = Param.Result = SUCCESS and
+                                    cmd.Msg.MsgId = Param.Msg.MsgId and                                     
+                                    cmd.Valid = true;
+            eq Do_Nothing: bool = (cmd.Valid = false); 
+            
+            guarantee "if SendMsg arg is error then report else success " : true ->
+            if Param.Valid = true 
+            then (if MSGID_VALID 
+            	then (if ((EVTID_VALID and Param.Msg.MsgId =  EVT_MSGID) or 
+            		not (EVTID_VALID and Param.Msg.MsgId <>  EVT_MSGID))
+            		then send_msg
+            		else Param.Result = BAD_ARGUMENT and Do_Nothing
+            	)else Param.Result = BAD_ARGUMENT and Do_Nothing
+            )else  Do_Nothing;
+	   	
+	   **};
+	end SendMsg;
+	
+	abstract RcvMsg
+		features
+			Param: feature group port_struct::Lib_RcvMsg;
+			PipeRead: feature group port_struct::read_pipe;
+			cmd: feature group port_struct::Com_RcvMsg;
+		annex agree{**
+			eq SUCCESS: int = 0; 
+            eq INVALID_PIPE: int = 2;
+			eq BAD_ARGUMENT: int = 3;
+			eq MAX_PIPES_MET: int = 4;
+			eq PIPE_CR_ERR: int = 5;
+			eq PIPENUM: int = 5;
+			eq MAX_MSGS_MET: int = 6;
+			eq MAX_DESTS_MET: int = 7;
+			eq BUF_ALOC_ERR: int = 8;
+			
+			eq rcv_msg: bool = Param.Result = SUCCESS and
+                                    cmd.PipeId = Param.PipeId and                                     
+                                    cmd.Valid = true;
+            eq Do_Nothing: bool = (cmd.Valid = false); 
+            
+			eq RCV_PIPEID_VALID: bool = Param.PipeId >= 0 and  Param.PipeId < PIPENUM;
+            guarantee "if RcvMsg arg is error then report else success " : true ->
+            if Param.Valid = true 
+            then (if RCV_PIPEID_VALID 
+            	then rcv_msg
+                else Param.Result = BAD_ARGUMENT and Do_Nothing
+            	)
+            else Do_Nothing;
+            
+	   	
+	   **};
+	end RcvMsg;
+end sb_controller;

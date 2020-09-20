@@ -254,7 +254,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -284,7 +284,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Depth" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -314,7 +314,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="PipeName" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -326,7 +326,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.15/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.3"/>
     </featureInstance>
     <featureInstance name="Valid" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -338,7 +338,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.4"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.4"/>
     </featureInstance>
     <featureInstance name="Result">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -368,7 +368,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.5"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.5/@ownedDataPort.5"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.3"/>
   </featureInstance>
@@ -401,7 +401,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="AppId" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -431,7 +431,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -443,7 +443,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -473,7 +473,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.7/@ownedDataPort.3"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.4"/>
   </featureInstance>
@@ -506,7 +506,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -536,7 +536,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -548,7 +548,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -578,7 +578,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.9/@ownedDataPort.3"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.5"/>
   </featureInstance>
@@ -611,7 +611,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="PipeId" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -641,7 +641,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Valid" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -653,7 +653,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.2"/>
     </featureInstance>
     <featureInstance name="Result">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -683,13 +683,13 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.3"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.11/@ownedDataPort.3"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.6"/>
   </featureInstance>
   <featureInstance name="SendMsg" category="featureGroup" direction="in out">
     <featureInstance name="Msg" direction="out">
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.0"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.0"/>
     </featureInstance>
     <featureInstance name="Valid" direction="out">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -701,7 +701,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.1"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.1"/>
     </featureInstance>
     <featureInstance name="Result">
       <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
@@ -731,7 +731,7 @@
         </ownedValue>
         <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.1/@ownedPropertyAssociation.0"/>
       </ownedPropertyAssociation>
-      <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_SB.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.2"/>
+      <feature xsi:type="aadl2:DataPort" href="../subscribe_and_publish/port_struct.aadl#/0/@ownedPublicSection/@ownedClassifier.13/@ownedDataPort.2"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.7"/>
   </featureInstance>
@@ -1100,18 +1100,6 @@
       <feature xsi:type="aadl2:DataPort" href="../Lib/Lib_TIME.aadl#/0/@ownedPublicSection/@ownedClassifier.4/@ownedDataPort.2"/>
     </featureInstance>
     <feature xsi:type="aadl2:FeatureGroup" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedFeatureGroup.11"/>
-  </featureInstance>
-  <featureInstance name="a" direction="out">
-    <ownedPropertyAssociation xsi:type="instance:PropertyAssociationInstance">
-      <property href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#Data_Model.Data_Representation"/>
-      <ownedValue>
-        <ownedValue xsi:type="aadl2:NamedValue">
-          <namedValue xsi:type="aadl2:EnumerationLiteral" href="platform:/plugin/org.osate.contribution.sei/resources/properties/Data_Model.aadl#/0/@ownedProperty.4/@ownedPropertyType/@ownedLiteral.1"/>
-        </ownedValue>
-      </ownedValue>
-      <propertyAssociation href="platform:/plugin/org.osate.contribution.sei/resources/packages/Base_Types.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedPropertyAssociation.0"/>
-    </ownedPropertyAssociation>
-    <feature xsi:type="aadl2:DataPort" href="../Surf.aadl#/0/@ownedPublicSection/@ownedClassifier.2/@ownedDataPort.0"/>
   </featureInstance>
   <componentInstance name="es_lib" category="thread">
     <featureInstance name="RegisterApp" category="featureGroup" direction="in out">

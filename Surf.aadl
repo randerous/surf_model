@@ -3,6 +3,7 @@ public
 	with Lib_ES;
 
 	with Lib_SB;
+	with port_struct;
 
 	with Component_App;
 
@@ -43,11 +44,11 @@ public
 			RegisterApp: feature group Lib_ES::Lib_RegisterApp; --暂时不知道
 			RestartApp: feature group Lib_ES::Lib_RestartApp;
 			DeleteApp: feature group Lib_ES::Lib_DeleteApp;
-			CreatePipe: feature group Lib_SB::Com_CreatePipe;
-			DeletePipe: feature group Lib_SB::Com_DeletePipe;
-			Subscribe: feature group Lib_SB::Com_Subscribe;
-			Unsubscribe: feature group Lib_SB::Com_Unsubscribe;
-			SendMsg: feature group Lib_SB::Com_SendMsg;
+			CreatePipe: feature group port_struct::Com_CreatePipe;
+			DeletePipe: feature group port_struct::Com_DeletePipe;
+			Subscribe: feature group port_struct::Com_Subscribe;
+			Unsubscribe: feature group port_struct::Com_Unsubscribe;
+			SendMsg: feature group port_struct::Com_SendMsg;
 			Register: feature group Lib_EVS::Lib_Register;
 			Unregister: feature group Lib_EVS::Lib_Unregister;
 			SendEvent: feature group Lib_EVS::Lib_SendEvent;
