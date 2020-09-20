@@ -43,7 +43,7 @@ public
 			sb_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 1
 			evs_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 			time_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
-			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4Ô¤ÏÈ·ÖÅäµÄ¹ÜµÀ¿Õ¼ä£¬Ìá¹©¼¤»î×Ö¶ÎInUse
+			app1_pipe: out data port Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4Ô¤ï¿½È·ï¿½ï¿½ï¿½Ä¹Üµï¿½ï¿½Õ¼ä£¬ï¿½á¹©ï¿½ï¿½ï¿½ï¿½ï¿½Ö¶ï¿½InUse
 --			es_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			sb_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
 --			evs_msg: out data port Data_SB::struct.CFE_SB_Msg_t;
@@ -55,7 +55,9 @@ public
 --			PipeName: in data port Base_Types::String;
 --			Valid: in data port Base_Types::Boolean;
 --			Result: out data port Base_Types::Unsigned_32;
-           --´ý¸Ä½ø
+            assume "NO CreatePipe and DeletePipe at same time" : not(CreatePipe.Valid = true and DeletePipe.Valid = true);
+            assume "NO Subscribe and Unsubscribe at same time" : not(Subscribe.Valid = true and Unsubscribe.Valid = true);
+           --ï¿½ï¿½ï¿½Ä½ï¿½
             eq SUCCESS: int = 0; 
             eq INVALID_PIPE: int = 2;
 			eq BAD_ARGUMENT: int = 3;
@@ -84,7 +86,7 @@ public
 --          PipeId: in data port Base_Types::Unsigned_8;
 --			AppId: in data port Base_Types::Unsigned_32;
 --			Valid: in data port Base_Types::Boolean;
---			Result: out data port Base_Types::Unsigned_32;
+----			Result: out data port Base_Types::Unsigned_32;
             guarantee "if DeletePipe appid >= PIPENUM,then BAD_ARGUMENT,else SUCCESS": true ->
         	if DeletePipe.Valid = true
         	then (if (DeletePipe.AppId >= PIPENUM ) then DeletePipe.Result = BAD_ARGUMENT
@@ -101,10 +103,10 @@ public
 --			Valid: in data port Base_Types::Boolean;
 --			Result: out data port Base_Types::Unsigned_32;
             
-            --°´ÕÕ ÏûÏ¢-¹ÜµÀ µÄ¶ÔÓ¦Ìí¼Ó Â·ÓÉ Êý¾Ý½á¹¹
+            --ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¢-ï¿½Üµï¿½ ï¿½Ä¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ Â·ï¿½ï¿½ ï¿½ï¿½ï¿½Ý½á¹¹
             eq MAX_MSGID: int = 64;
             eq MAX_SUB_PER_MSG: int = 16;
-            --ÁôÒ»¸öÏûÏ¢µÄÊý¾Ý½á¹¹Ã»Ð´£¬°üº¬ÏûÏ¢µÄµ±Ç°±»¶©ÔÄÊý MAX_DESTS_MET,,BUF_ALOC_ERR
+--          --ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½Ý½á¹¹Ã»Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½Äµï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ MAX_DESTS_MET,,BUF_ALOC_ERR
             guarantee "if Subscribe pipeid >= PIPENUM or < 0,then BAD_ARGUMENT,else SUCCESS": true ->
             if Subscribe.Valid = true 
             then (if Subscribe.PipeId < 0 or Subscribe.PipeId > PIPENUM or 
@@ -211,7 +213,7 @@ public
 --			evs_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 2
 --			time_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 3
 --			app1_pipe: data Data_SB::struct.CFE_SB_PipeD_t; --PipeId = 4
-				--°´ÕÕ ÏûÏ¢-¹ÜµÀ µÄ¶ÔÓ¦Ìí¼Ó Â·ÓÉ Êý¾Ý½á¹¹
+				--ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ï¢-ï¿½Üµï¿½ ï¿½Ä¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ Â·ï¿½ï¿½ ï¿½ï¿½ï¿½Ý½á¹¹
 --		 annex agree {**
 --            lemma "": app1_pipe.InUse = true;
 --        **};

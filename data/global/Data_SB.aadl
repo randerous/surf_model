@@ -38,8 +38,8 @@ public
 		subcomponents
 			InUse: data Base_Types::boolean;
 			PipeId: data Base_Types::Unsigned_8;
-			PipeName: data Base_Types::String;
-			AppName: data Base_Types::String;
+			PipeName: data Base_Types::boolean;
+			AppName: data Base_Types::boolean;
 			Spare: data Base_Types::Unsigned_16;
 			AppId: data Base_Types::Unsigned_32;
 			SysQueueId: data Base_Types::Unsigned_32;
@@ -48,7 +48,7 @@ public
 			SendErrors: data Base_Types::Unsigned_16;
 			CurrentBuff: data struct.CFE_SB_BufferD_t;
 			ToTrashBuff: data struct.CFE_SB_BufferD_t;
-			MsgQueue: data Base_Types::String;
+			MsgQueue: data Base_Types::boolean;
 			MsgId: data Base_Types::Integer;
 			ReadIdx: data Base_Types::Unsigned_8;
 			WriteIdx: data Base_Types::Unsigned_8;
@@ -59,14 +59,14 @@ public
 			MsgId: data Base_Types::Unsigned_16;
 			UseCount: data Base_Types::Unsigned_16;
 			Size: data Base_Types::Unsigned_32;
-			Buffer: data Base_Types::String;
+			Buffer: data Base_Types::boolean;
 			Sender: data struct.CFE_SB_SenderId_t;
 	end struct.CFE_SB_BufferD_t;
 	
 	data implementation struct.CFE_SB_SenderId_t
 		subcomponents
 			ProcessorId: data Base_Types::Unsigned_32;
-			AppName: data Base_Types::String;
+			AppName: data Base_Types::boolean;
 	end struct.CFE_SB_SenderId_t;
 	
 	data implementation struct.CFE_SB_RouteEntry_t
@@ -93,7 +93,7 @@ public
 		subcomponents
 			MsgId: data Base_Types::Unsigned_16;
 			EvtId: data Base_Types::Unsigned_16;
-			Content: data Base_Types::String;
+			Content: data Base_Types::boolean;
 	end struct.CFE_SB_Msg_t;
 	
 end Data_SB;

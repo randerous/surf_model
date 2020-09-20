@@ -38,7 +38,7 @@ public
 			AppId: data Base_Types::Unsigned_32;
 			TaskId: data Base_Types::Unsigned_32;
 			ExecutionCounter: data Base_Types::Unsigned_32;
-			TaskName: data Base_Types::String;
+			TaskName: data Base_Types::boolean;
 	end struct.CFE_ES_TaskRecord_t;
 
 	data implementation struct.CFE_ES_AppRecord_t
@@ -52,9 +52,9 @@ public
 
 	data implementation struct.CFE_ES_AppStartParams_t
 		subcomponents
-			Name: data Base_Types::String;
-			EntryPoint: data Base_Types::String;
-			FileName: data Base_Types::String;
+			Name: data Base_Types::boolean;
+			EntryPoint: data Base_Types::boolean;
+			FileName: data Base_Types::boolean;
 			StackSize: data Base_Types::Unsigned_32;
 			StartAddress: data Base_Types::Unsigned_64;
 			ModuleId: data Base_Types::Unsigned_32;
@@ -74,7 +74,7 @@ public
 	data implementation struct.CFE_ES_MainTaskInfo_t
 		subcomponents
 			MainTaskId: data Base_Types::Unsigned_32;
-			MainTaskName: data Base_Types::String;
+			MainTaskName: data Base_Types::boolean;
 			NumOfChildTasks: data Base_Types::Integer_32;
 	end struct.CFE_ES_MainTaskInfo_t;
 	
