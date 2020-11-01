@@ -183,4 +183,5 @@ public
 			evs_SendEvent: feature group evs.EVS_API.SendEvent <-> evs_lib.SendEvent;
 			time_SendEvent: feature group time.EVS_API.SendEvent <-> evs_lib.SendEvent;
 	end core.impl;
+	
 end Component_Group_Core;

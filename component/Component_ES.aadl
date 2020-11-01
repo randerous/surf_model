@@ -9,7 +9,8 @@ public
 
 	thread implementation es.impl
 		subcomponents
-			TaskRecord: data Data_ES::struct.CFE_ES_TaskRecord_t;	--task info
-			AppRecord: data Data_ES::struct.CFE_ES_AppRecord_t;		--application info
+			TaskRecord: data Data_ES::struct.CFE_ES_TaskRecord_t; --task info
+			AppRecord: data Data_ES::struct.CFE_ES_AppRecord_t; --application info
+
 	end es.impl;
 end Component_ES;
