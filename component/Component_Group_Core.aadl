@@ -51,8 +51,13 @@ public
 			eq TIME_OUT: int = 15;--
 			eq PIPE_RD_ERR: int = 16;--
 			
-			assume "": true -> not (ES_API.RestartApp.Valid = true and ES_API.DeleteApp.Valid = true );
-			assume "": true -> not (SB_API.CreatePipe.Valid = true and SB_API.DeletePipe.Valid = true );
+			assume "No Restart and delete app simultaneously": true -> not (ES_API.RestartApp.Valid = true and ES_API.DeleteApp.Valid = true );
+			assume "No Create and delete pipe simultaneously": 
+			true -> not (SB_API.CreatePipe.Valid = true and SB_API.DeletePipe.Valid = true );
+			assume "No subscribe and subscribe simultaneously": true -> 
+			                       not (SB_API.Subscribe.Valid = true and SB_API.Unsubscribe.Valid = true );
+			assume "No send and recv simultaneously": true -> 
+			                       not (SB_API.SendMsg.Valid = true and SB_API.RcvMsg.Valid = true );
 			
 			guarantee "Restart App": true -> ES_API.RestartApp.Valid = true => 
 			ES_API.RestartApp.Result = SUCCESS or 
@@ -126,7 +131,7 @@ public
 			evs: thread Component_EVS::evs;
 			time: thread Component_TIME::time;
 			es_lib: thread Lib_ES::es_lib.impl;
-			sb_lib: abstract Lib_SB::sb_lib.impl;
+			sb_lib: thread Lib_SB::sb_lib.impl;
 			evs_lib: thread Lib_EVS::evs_lib.impl;
 			time_lib: thread Lib_TIME::time_lib.impl;
 			

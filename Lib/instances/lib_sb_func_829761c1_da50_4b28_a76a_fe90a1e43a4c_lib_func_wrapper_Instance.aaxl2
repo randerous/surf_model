@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<instance:SystemInstance xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aadl2="http://aadl.info/AADL/2.0" xmlns:instance="http://aadl.info/AADL/2.0/instance" name="lib_func_wrapper_Instance" category="thread">
+  <featureInstance name="CreatePipe" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.0"/>
+  </featureInstance>
+  <featureInstance name="DeletePipe" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.1"/>
+  </featureInstance>
+  <featureInstance name="Subscribe" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.2"/>
+  </featureInstance>
+  <featureInstance name="Unsubscribe" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.3"/>
+  </featureInstance>
+  <featureInstance name="SendMsg" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.4"/>
+  </featureInstance>
+  <featureInstance name="RcvMsg" category="featureGroup" direction="in out">
+    <feature xsi:type="aadl2:FeatureGroup" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedFeatureGroup.5"/>
+  </featureInstance>
+  <featureInstance name="es_pipe" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.0"/>
+  </featureInstance>
+  <featureInstance name="sb_pipe" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.1"/>
+  </featureInstance>
+  <featureInstance name="evs_pipe" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.2"/>
+  </featureInstance>
+  <featureInstance name="time_pipe" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.3"/>
+  </featureInstance>
+  <featureInstance name="app1_pipe" direction="out">
+    <feature xsi:type="aadl2:DataPort" href="../lib_sb_func.aadl#/0/@ownedPublicSection/@ownedClassifier.0/@ownedDataPort.4"/>
+  </featureInstance>
+  <systemOperationMode name="No Modes"/>
+  <componentImplementation xsi:type="aadl2:ThreadImplementation" href="../lib_sb_func_829761c1_da50_4b28_a76a_fe90a1e43a4c.aadl#lib_sb_func_829761c1_da50_4b28_a76a_fe90a1e43a4c.lib_func.wrapper"/>
+</instance:SystemInstance>
