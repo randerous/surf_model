@@ -1,0 +1,22 @@
+package Data_HS
+public
+	with Base_Types;
+	
+	data struct
+	end struct;
+	
+	data implementation struct.HS_AMTEntry_t
+		subcomponents
+			AppName: data Base_Types::String;
+			CycleCount: data Base_Types::Unsigned_16;
+			ActionType: data Base_Types::Unsigned_16;
+	end struct.HS_AMTEntry_t;
+	
+	data implementation struct.HS_EMTEntry_t
+		subcomponents
+			AppName: data Base_Types::String;
+			EventID: data Base_Types::Unsigned_16;
+			ActionType: data Base_Types::Unsigned_16;
+	end struct.HS_EMTEntry_t;
+	
+end Data_HS;

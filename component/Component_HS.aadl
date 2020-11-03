@@ -1,0 +1,16 @@
+package Component_HS
+public
+	with Component;
+	
+	with Data_HS;
+	
+	thread hs extends Component::app_thread
+		
+	end hs;
+	
+	thread implementation hs.impl
+		subcomponents
+			app_prolong: data Data_HS::struct.HS_AMTEntry_t;
+			app_exception: data Data_HS::struct.HS_EMTEntry_t;
+	end hs.impl;
+end Component_HS;

@@ -7,6 +7,8 @@ public
 	with Component_EVS;
 
 	with Component_TIME;
+	
+	with Component_HS;
 
 	with Lib_ES;
 
@@ -126,10 +128,11 @@ public
 
 	thread group implementation core.impl
 		subcomponents
-			es: thread Component_ES::es;
-			sb: thread Component_SB::sb;
-			evs: thread Component_EVS::evs;
-			time: thread Component_TIME::time;
+--			es: thread Component_ES::es;
+--			sb: thread Component_SB::sb;
+--			evs: thread Component_EVS::evs;
+--			time: thread Component_TIME::time;
+			hs: thread Component_HS::hs;
 			es_lib: thread Lib_ES::es_lib.impl;
 			sb_lib: thread Lib_SB::sb_lib.impl;
 			evs_lib: thread Lib_EVS::evs_lib.impl;
@@ -153,40 +156,14 @@ public
 			
 			GetTime: feature group TIME_API.GetTime <-> time_lib.GetTime;
 			
-			es_RegisterApp: feature group es.ES_API.RegisterApp <-> es_lib.RegisterApp;
-			sb_RegisterApp: feature group sb.ES_API.RegisterApp <-> es_lib.RegisterApp;
-			evs_RegisterApp: feature group evs.ES_API.RegisterApp <-> es_lib.RegisterApp;
-			time_RegisterApp: feature group time.ES_API.RegisterApp <-> es_lib.RegisterApp;
-			
-			es_CreatePipe: feature group es.SB_API.CreatePipe <-> sb_lib.CreatePipe;
-			sb_CreatePipe: feature group sb.SB_API.CreatePipe <-> sb_lib.CreatePipe;
-			evs_CreatePipe: feature group evs.SB_API.CreatePipe <-> sb_lib.CreatePipe;
-			time_CreatePipe: feature group time.SB_API.CreatePipe <-> sb_lib.CreatePipe;
-			
-			es_Subscribe: feature group es.SB_API.Subscribe <-> sb_lib.Subscribe;
-			sb_Subscribe: feature group sb.SB_API.Subscribe <-> sb_lib.Subscribe;
-			evs_Subscribe: feature group evs.SB_API.Subscribe <-> sb_lib.Subscribe;
-			time_Subscribe: feature group time.SB_API.Subscribe <-> sb_lib.Subscribe;
-			
-			es_SendMsg: feature group es.SB_API.SendMsg <-> sb_lib.SendMsg;
-			sb_SendMsg: feature group sb.SB_API.SendMsg <-> sb_lib.SendMsg;
-			evs_SendMsg: feature group evs.SB_API.SendMsg <-> sb_lib.SendMsg;
-			time_SendMsg: feature group time.SB_API.SendMsg <-> sb_lib.SendMsg;
-			
-			es_RcvMsg: feature group es.SB_API.RcvMsg <-> sb_lib.RcvMsg;
-			sb_RcvMsg: feature group sb.SB_API.RcvMsg <-> sb_lib.RcvMsg;
-			evs_RcvMsg: feature group evs.SB_API.RcvMsg <-> sb_lib.RcvMsg;
-			time_RcvMsg: feature group time.SB_API.RcvMsg <-> sb_lib.RcvMsg;
-			
-			es_Register: feature group es.EVS_API.Register <-> evs_lib.Register;
-			sb_Register: feature group sb.EVS_API.Register <-> evs_lib.Register;
-			evs_Register: feature group evs.EVS_API.Register <-> evs_lib.Register;
-			time_Register: feature group time.EVS_API.Register <-> evs_lib.Register;
-			
-			es_SendEvent: feature group es.EVS_API.SendEvent <-> evs_lib.SendEvent;
-			sb_SendEvent: feature group sb.EVS_API.SendEvent <-> evs_lib.SendEvent;
-			evs_SendEvent: feature group evs.EVS_API.SendEvent <-> evs_lib.SendEvent;
-			time_SendEvent: feature group time.EVS_API.SendEvent <-> evs_lib.SendEvent;
+			hs_RegisterApp: feature group hs.ES_API.RegisterApp <-> es_lib.RegisterApp;
+			hs_CreatePipe: feature group hs.SB_API.CreatePipe <-> sb_lib.CreatePipe;
+			hs_Subscribe: feature group hs.SB_API.Subscribe <-> sb_lib.Subscribe;
+			hs_SendMsg: feature group hs.SB_API.SendMsg <-> sb_lib.SendMsg;
+			hs_RcvMsg: feature group hs.SB_API.RcvMsg <-> sb_lib.RcvMsg;
+			hs_Register: feature group hs.EVS_API.Register <-> evs_lib.Register;
+			hs_SendEvent: feature group hs.EVS_API.SendEvent <-> evs_lib.SendEvent;
+
 	end core.impl;
 	
 end Component_Group_Core;
